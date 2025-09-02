@@ -33,14 +33,14 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `agencia`.`Productos` (
   `idProductos` INT NOT NULL AUTO_INCREMENT,
-  `titulo` VARCHAR(100) NOT NULL,
-  `img` VARCHAR(200) NOT NULL,
+  `titulo` VARCHAR(300) NOT NULL,
+  `img` VARCHAR(300) NOT NULL,
   `precio` INT NOT NULL,
-  `lugares` VARCHAR(200) NOT NULL,
+  `lugares` VARCHAR(1000) NOT NULL,
   `dias` VARCHAR(2) NOT NULL,
   `noches` VARCHAR(2) NOT NULL,
-  `incluye` VARCHAR(200) NOT NULL,
-  `noIncluye` VARCHAR(200) NOT NULL,
+  `incluye` VARCHAR(1000) NOT NULL,
+  `noIncluye` VARCHAR(1000) NOT NULL,
   PRIMARY KEY (`idProductos`))
 ENGINE = InnoDB;
 

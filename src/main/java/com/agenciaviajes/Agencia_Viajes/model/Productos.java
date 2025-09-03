@@ -1,7 +1,6 @@
 package com.agenciaviajes.Agencia_Viajes.model;
 
 public class Productos {
-	private static Long total= 0;
 	private Long id;
     private String titulo;
     private String imagenUrl;
@@ -12,7 +11,7 @@ public class Productos {
     private String incluye;
     private String noIncluye;
     
-    
+    private static Long total= 0;
 	public Productos(String titulo, String imagenUrl, double precio, String lugares, int dias, int noches,
 			String incluye, String noIncluye) {
 		super();
@@ -32,7 +31,7 @@ public class Productos {
 	public Productos() {
 		Productos.total++;
 		this.id= Productos.total;
-	}//ProductosId
+	}//ProductosId constructor vacío
 
 
 	public Long getId() {
@@ -132,7 +131,5 @@ public class Productos {
 				+ ", noIncluye=" + noIncluye + "]";
 	}//toString
 	
-	
-    
-    
+ 
 }//classProducto

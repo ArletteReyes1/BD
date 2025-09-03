@@ -4,15 +4,15 @@ public class Productos {
 	private Long id;
     private String titulo;
     private String imagenUrl;
-    private double precio;
+    private Double precio;
     private String lugares;
-    private int dias;
-    private int noches;
+    private Integer dias;
+    private Integer noches;
     private String incluye;
     private String noIncluye;
     
-    private static Long total= 0;
-	public Productos(String titulo, String imagenUrl, double precio, String lugares, int dias, int noches,
+    private static Long total=0L;
+	public Productos(String titulo, String imagenUrl, Double precio, String lugares, Integer dias, Integer noches,
 			String incluye, String noIncluye) {
 		super();
 		this.titulo = titulo;
@@ -64,12 +64,12 @@ public class Productos {
 	}//setImagenUrl
 
 
-	public double getPrecio() {
+	public Double getPrecio() {
 		return precio;
 	}//getPrecio
 
 
-	public void setPrecio(double precio) {
+	public void setPrecio(Double precio) {
 		this.precio = precio;
 	}//setPrecio
 
@@ -84,22 +84,22 @@ public class Productos {
 	}//setLugares
 
 
-	public int getDias() {
+	public Integer getDias() {
 		return dias;
 	}//getDias
 
 
-	public void setDias(int dias) {
+	public void setDias(Integer dias) {
 		this.dias = dias;
 	}//setDias
 
 
-	public int getNoches() {
+	public Integer getNoches() {
 		return noches;
 	}//getNoches
 
 
-	public void setNoches(int noches) {
+	public void setNoches(Integer noches) {
 		this.noches = noches;
 	}//setNoches
 
@@ -130,6 +130,7 @@ public class Productos {
 				+ ", lugares=" + lugares + ", dias=" + dias + ", noches=" + noches + ", incluye=" + incluye
 				+ ", noIncluye=" + noIncluye + "]";
 	}//toString
-	
+
+
  
 }//classProducto

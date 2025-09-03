@@ -7,14 +7,19 @@ public class cotizacion {
     private Long fkIdUsuario;
 	
   //CONSTRUCTOR
+    private static Long total=0L;
     public cotizacion(String fecha, Long fkIdUsuario) {
 		super();
 		this.fecha = fecha;
 		this.fkIdUsuario = fkIdUsuario;
+		cotizacion.total++;
+		this.idCotizacion= cotizacion.total;
 	}//constructor
 
-	public cotizacion() {
+  	public cotizacion() {
 		super();
+		cotizacion.total++;
+		this.idCotizacion= cotizacion.total;
 	}//constructor vacío
 
 
@@ -51,13 +56,6 @@ public class cotizacion {
 				+ ", getIdCotizacion()=" + getIdCotizacion() + ", getFecha()=" + getFecha() + ", getFkIdUsuario()="
 				+ getFkIdUsuario() + "]";
 	}//toString
-	
-	
-    
-
-
-	
-	
 	
 	
 }//classCotizacion

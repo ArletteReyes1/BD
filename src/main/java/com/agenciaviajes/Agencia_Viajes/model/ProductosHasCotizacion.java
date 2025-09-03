@@ -1,38 +1,56 @@
 package com.agenciaviajes.Agencia_Viajes.model;
 public class ProductosHasCotizacion {
 //PARÁMETROS
-	 private int fkIdProductos;
-	 private int fkIdCotizacion;
+	 private Long Id;
+	 private Long fkIdProductos;
+	 private Long fkIdCotizacion;
 	
 //CONSTRUCTOR
-	 public ProductosHasCotizacion(int fkIdProductos, int fkIdCotizacion) {
+	 private static Long total=0L;
+	 public ProductosHasCotizacion(Long fkIdProductos, Long fkIdCotizacion) {
 		super();
 		this.fkIdProductos = fkIdProductos;
 		this.fkIdCotizacion = fkIdCotizacion;
+		ProductosHasCotizacion.total++;
+		this.Id= ProductosHasCotizacion.total;
 	}//constructor
 	public ProductosHasCotizacion() {
 		super();
+		ProductosHasCotizacion.total++;
+		this.Id= ProductosHasCotizacion.total;
 	}//constructor vacío
 	
+
+	
 //GETTERS AND SETTERS
-	public int getFkIdProductos() {
+	
+	public Long getId() {
+		return Id;
+	}//getId
+	
+	public Long getFkIdProductos() {
 		return fkIdProductos;
 	}//getFkIdProductos
-	public void setFkIdProductos(int fkIdProductos) {
+	public void setFkIdProductos(Long fkIdProductos) {
 		this.fkIdProductos = fkIdProductos;
 	}//setFkIdProductos
-	public int getFkIdCotizacion() {
+	public Long getFkIdCotizacion() {
 		return fkIdCotizacion;
 	}//getFkIdCotizacion
-	public void setFkIdCotizacion(int fkIdCotizacion) {
+	public void setFkIdCotizacion(Long fkIdCotizacion) {
 		this.fkIdCotizacion = fkIdCotizacion;
-	}//setFkIdCotizacion
+	}
 	
-//MÉTODO TO STRING
+	//MÉTODO TO STRING
 	@Override
 	public String toString() {
-		return "ProductosHasCotizacion [fkIdProductos=" + fkIdProductos + ", fkIdCotizacion=" + fkIdCotizacion
-				+ ", getFkIdProductos()=" + getFkIdProductos() + ", getFkIdCotizacion()=" + getFkIdCotizacion() + "]";
-	}//toString
+		return "ProductosHasCotizacion [Id=" + Id + ", fkIdProductos=" + fkIdProductos + ", fkIdCotizacion="
+				+ fkIdCotizacion + "]";
+	}//setFkIdCotizacion
+	
+
+	
+	
+	
 		
 }//classProductosHasCotizacion

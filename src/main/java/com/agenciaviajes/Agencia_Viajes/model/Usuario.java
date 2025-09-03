@@ -8,7 +8,7 @@ public class Usuario {
     private String telefono;
     private String contrasena;
     
-    
+    private static Long total=0L;
 	public Usuario(String tipo, String nombre, String correo, String telefono, String contrasena) {
 		super();
 		this.tipo = tipo;
@@ -16,12 +16,14 @@ public class Usuario {
 		this.correo = correo;
 		this.telefono = telefono;
 		this.contrasena = contrasena;
+		Usuario.total++;
+		this.id= Usuario.total;
 	}
-
 
 	public Usuario() {
-		
-	}
+		Usuario.total++;
+		this.id= Usuario.total;
+	}// constructor
 
 
 	public Long getId() {

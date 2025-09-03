@@ -1,1 +1,2 @@
 rootProject.name = 'Agencia-Viajes'
+server.port=8080

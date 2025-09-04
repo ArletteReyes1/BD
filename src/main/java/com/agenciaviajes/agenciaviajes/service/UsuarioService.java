@@ -1,76 +1,83 @@
 package com.agenciaviajes.agenciaviajes.service;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.agenciaviajes.agenciaviajes.model.Usuario;
-import com.agenciaviajes.agenciaviajes.model.cotizacion;
+import com.agenciaviajes.agenciaviajes.model.ChangePassword;
+import com.agenciaviajes.agenciaviajes.repository.UsuarioRepository;
 
 @Service
 public class UsuarioService {
-	private final ArrayList<Usuario>lista = new ArrayList<Usuario>();
+	private final UsuarioRepository repository;
 
-@Autowired
-public UsuarioService(){
-	lista.add(new Usuario("Administrador","Edgar", "edgar@gmail.com", "5534678767", "ABc123*$"));
-	lista.add(new Usuario("Usuario","Nadia", "nadia@gmail.com", "5537885412", "ZYz908&!"));
-	lista.add(new Usuario("Administrador","Susana", "susanaemosita@gmail.com", "5544221214", "!$MnJ888*."));
-	lista.add(new Usuario("Usuario","Capri", "capritoreto@gmail.com", "5522441587", "77/*9hGF."));
-	lista.add(new Usuario("Administrador","Maria", "maria23@gmail.com", "5533856669", "*8VCB5Jhg"));
-}//UsuarioService
+	@Autowired
+	public UsuarioService(UsuarioRepository repository) {
+		this.repository = repository;
+	}// constructor
 
-	public List<Usuario> getUsuarios(){
-		return lista;
-	}
+	public List<Usuario> getUsuarios() {
+		return repository.findAll();
+	}// get
 
 	public Usuario getUsuarios(Long id) {
-		Usuario tmpProd = null; //producto temporal, de inicio null y si lo encuentra, lo establece. 
-		  for(Usuario user: lista) {
-		   if(user.getId()==id) {
-		    tmpProd=user;
-		    break;
-		   }//if
-		  }//foreach
-		  return tmpProd;
+		return repository.findById(id).orElseThrow(
+				() -> new IllegalArgumentException("El usuario con el id [" + id + "] no existe"));
 	}
 
 	public Usuario deleteUsuarios(Long id) {
-		Usuario tmpProd = null; //producto temporal, de inicio null y si lo encuentra, lo establece. 
-		  for(Usuario user: lista) {
-		   if(user.getId()==id) {
-		    tmpProd=user;
-		    lista.remove(user);
-		    break;
-		   }//if
-		  }//foreach
-		  return tmpProd;
+		Usuario tmpUsu = null;
+		if (repository.existsById(id)) {
+			tmpUsu = repository.findById(id).get();
+			repository.deleteById(id);
+		}
+		return tmpUsu;
 	}
 
 	public Usuario addUsuario(Usuario usuario) {
-		lista.add(usuario);
-		  return usuario;
-	}//addUsuario
+		Optional<Usuario> usu = repository.findByCorreo(usuario.getCorreo());
+		if (usu.isEmpty()) {
+			repository.save(usuario);
+		} else {
+			usuario = null;
+		}
+		return usuario;
+	}
 
 	public Usuario addUsuario(Long id, String tipo, String nombre, String correo, String telefono, String contrasena) {
-		Usuario tmpProd = null; 
-		  for(Usuario user: lista) {
-		   if(user.getId()==id) {
-		    tmpProd=user;
-		    if(tipo!=null) user.setTipo(tipo);
-		    if(nombre!=null) user.setNombre(nombre);
-		    if(correo!=null) user.setCorreo(correo);
-		    if(telefono!=null) user.setTelefono(telefono);
-		    if(contrasena!=null) user.setContrasena(contrasena);
-		    tmpProd=user;
-		    break;
-		   }//if
-		  }//foreach
-		  return tmpProd;
-	}//updateUsuario
+		Usuario tmpProd = null;
+		if (repository.existsById(id)) {
+			tmpProd = repository.findById(id).get();
+			if (tipo != null)
+				tmpProd.setTipo(tipo);
+			if (nombre != null)
+				tmpProd.setNombre(nombre);
+			if (correo != null)
+				tmpProd.setCorreo(correo);
+			if (telefono != null)
+				tmpProd.setTelefono(telefono);
+			if (contrasena != null)
+				tmpProd.setContrasena(contrasena);
+			repository.save(tmpProd); // guardar cambios en la base de datos
+		}
+		return tmpProd;
+	}// updateUsuario
 
-}//class UsuarioService
+	public Usuario updateUsuario(Long id, ChangePassword changePassword) {
+		Usuario user = null;
+		if (repository.existsById(id)) {// encuentra al usuario si es que existe
+			user = repository.findById(id).get();
+			if (user.getContrasena().equals(changePassword.getPassword())) {
+				user.setContrasena(changePassword.getNpassword()); // agregará un nuevo password.
+				return repository.save(user);// guardar ese cambio en el repositorio
+			} else {
+				user = null;
+			} // equals
+		} // if else
+		return user;
+	}// updateUsuario
 
-
+}// class UsuarioService

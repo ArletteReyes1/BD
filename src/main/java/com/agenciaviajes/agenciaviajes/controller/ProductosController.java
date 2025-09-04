@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+<<<<<<< HEAD:src/main/java/com/agenciaviajes/agenciaviajes/controller/ProductosController.java
 
 import com.agenciaviajes.agenciaviajes.model.Productos;
 import com.agenciaviajes.agenciaviajes.model.ProductosHasCotizacion;
@@ -16,6 +17,10 @@ import com.agenciaviajes.agenciaviajes.model.Usuario;
 import com.agenciaviajes.agenciaviajes.model.cotizacion;
 import com.agenciaviajes.agenciaviajes.service.ProductosService;
 
+=======
+import com.agenciaviajes.Agencia_Viajes.model.Productos;
+import com.agenciaviajes.Agencia_Viajes.service.ProductosService;
+>>>>>>> regisJlp:src/main/java/com/agenciaviajes/Agencia_Viajes/controller/ProductosController.java
 import java.util.List;
 
 @RestController
@@ -48,26 +53,25 @@ public class ProductosController {
 	 }//DeleteProductos
 	
 	
-	//POST
+//POST
 	@PostMapping 
 	 public Productos addProductos(@RequestBody Productos productos) { // el parametro sera Producto, lo voy a solicitar en el cuerpo de la solicitud. y necesito @RequestBody
-	  //usamos el contrsuctor vacio que le pusimos a Cotizacion
 	  return service.addProductos(productos);// Crear el metodo en ProductoService.
 	 }//addProductos
 	
 	//PUT
 	@PutMapping (path="{prodId}")
-	 public Productos addProductos(@PathVariable("prodId")Long id, 
-	   @RequestParam(required=false)  String titulo,
-	   @RequestParam (required=false) String imagenUrl,
-	   @RequestParam (required=false) Double precio,
-	   @RequestParam (required=false) String lugares,
-	   @RequestParam (required=false) Integer dias,
-	   @RequestParam (required=false) Integer noches,
-	   @RequestParam (required=false) String incluye,
-	   @RequestParam (required=false) String noIncluye)
-	   { /// vamos a pedir todos los parámetros
-	  return service.addProductos(id, titulo, imagenUrl, precio, lugares, dias, noches, incluye, noIncluye); 
-	  }//updateproductos
-	
+	 public Productos updateProductos (@PathVariable("prodId")Long id,
+				@RequestParam (required=false) String titulo,
+				@RequestParam (required=false) String imagenUrl,
+				@RequestParam (required=false) Double precio,
+	 			@RequestParam (required=false) String lugares,
+				@RequestParam (required=false) Integer dias,
+				@RequestParam (required=false) Integer noches,
+	 			@RequestParam (required=false) String incluye,
+				@RequestParam (required=false) String noIncluye){
+			return service.updateProductos (id, titulo, imagenUrl,precio, lugares, dias,  noches,
+				 incluye, noIncluye);
+			}
+
 }//classProductosController

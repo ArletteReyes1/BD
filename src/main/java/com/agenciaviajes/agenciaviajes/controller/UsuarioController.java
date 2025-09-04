@@ -2,6 +2,7 @@ package com.agenciaviajes.agenciaviajes.controller;
 
 import java.util.List;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,13 +11,18 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+<<<<<<< HEAD:src/main/java/com/agenciaviajes/agenciaviajes/controller/UsuarioController.java
 import com.agenciaviajes.agenciaviajes.model.Productos;
 import com.agenciaviajes.agenciaviajes.model.Usuario;
 import com.agenciaviajes.agenciaviajes.model.cotizacion;
 import com.agenciaviajes.agenciaviajes.service.UsuarioService;
+=======
+import com.agenciaviajes.Agencia_Viajes.dto.CambiarContrasena;
+import com.agenciaviajes.Agencia_Viajes.model.Usuario;
+import com.agenciaviajes.Agencia_Viajes.service.UsuarioService;
+>>>>>>> regisJlp:src/main/java/com/agenciaviajes/Agencia_Viajes/controller/UsuarioController.java
 
 @RestController
 @RequestMapping(path="/api/Usuarios/") //http://localhost:8080/api/Usuarios/
@@ -48,22 +54,17 @@ public class UsuarioController {
 		
 	//POST
 		@PostMapping 
-		 public Usuario addUsuario(@RequestBody Usuario usuario) { // el parametro sera Producto, lo voy a solicitar en el cuerpo de la solicitud. y necesito @RequestBody
-		  //usamos el contrsuctor vacio que le pusimos a Cotizacion
-		  return service.addUsuario(usuario);// Crear el metodo en ProductoService.
+		 public Usuario addUsuario(@RequestBody Usuario usuarios) { 
+		  return service.addUsuario(usuarios);// Crear el metodo en ProductoService.
 		 }//addUsuario
 		
 	//PUT
 		@PutMapping (path="{userId}")
-		 public Usuario addUsuario(@PathVariable("userId")Long id, 
-		   @RequestParam(required=false)  String tipo,
-		   @RequestParam (required=false) String nombre,
-		   @RequestParam (required=false) String correo,
-		   @RequestParam (required=false) String telefono,
-		   @RequestParam (required=false) String contrasena)
-		   { /// vamos a pedir todos los parámetros
-		  return service.addUsuario(id, tipo, nombre, correo, telefono, contrasena); 
+		 public Usuario addUsuario(@PathVariable ("userID") Long id,
+				 @RequestBody CambiarContrasena cambiarContrasena) {
+		  return service.updateUsuario(id, cambiarContrasena); 
 		  }//updateUsuario
+		
 	
 		
 }//classUsuarioController

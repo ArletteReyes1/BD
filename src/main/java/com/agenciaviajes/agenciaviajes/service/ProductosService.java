@@ -1,7 +1,8 @@
-package com.agenciaviajes.Agencia_Viajes.service;
+package com.agenciaviajes.agenciaviajes.service;
 import org.springframework.stereotype.Service;
-import com.agenciaviajes.Agencia_Viajes.model.Productos;
-import com.agenciaviajes.Agencia_Viajes.model.Usuario;
+
+import com.agenciaviajes.agenciaviajes.model.Productos;
+import com.agenciaviajes.agenciaviajes.model.Usuario;
 
 import java.util.ArrayList;
 import java.util.List;

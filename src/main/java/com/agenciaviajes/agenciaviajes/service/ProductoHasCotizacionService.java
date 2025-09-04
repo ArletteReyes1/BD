@@ -1,13 +1,13 @@
-package com.agenciaviajes.Agencia_Viajes.service;
+package com.agenciaviajes.agenciaviajes.service;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.agenciaviajes.Agencia_Viajes.model.Productos;
-import com.agenciaviajes.Agencia_Viajes.model.ProductosHasCotizacion;
-import com.agenciaviajes.Agencia_Viajes.model.Usuario;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.agenciaviajes.agenciaviajes.model.Productos;
+import com.agenciaviajes.agenciaviajes.model.ProductosHasCotizacion;
+import com.agenciaviajes.agenciaviajes.model.Usuario;
 
 
 @Service

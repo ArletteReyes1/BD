@@ -1,4 +1,4 @@
-package com.agenciaviajes.Agencia_Viajes.model;
+package com.agenciaviajes.agenciaviajes.model;
 public class ProductosHasCotizacion {
 //PARÁMETROS
 	 private Long Id;

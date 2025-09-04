@@ -1,4 +1,4 @@
-package com.agenciaviajes.Agencia_Viajes;
+package com.agenciaviajes.agenciaviajes;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

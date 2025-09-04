@@ -1,4 +1,4 @@
-package com.agenciaviajes.Agencia_Viajes.controller;
+package com.agenciaviajes.agenciaviajes.controller;
 
 import java.util.List;
 
@@ -13,9 +13,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.agenciaviajes.Agencia_Viajes.model.Usuario;
-import com.agenciaviajes.Agencia_Viajes.model.cotizacion;
-import com.agenciaviajes.Agencia_Viajes.service.CotizacionService;
+import com.agenciaviajes.agenciaviajes.model.Usuario;
+import com.agenciaviajes.agenciaviajes.model.cotizacion;
+import com.agenciaviajes.agenciaviajes.service.CotizacionService;
 
 @RestController
 @RequestMapping(path="/api/Cotizacion/") //http://localhost:8080/api/Cotizacion/

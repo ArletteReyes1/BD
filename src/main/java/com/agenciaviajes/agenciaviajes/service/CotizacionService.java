@@ -1,4 +1,4 @@
-package com.agenciaviajes.Agencia_Viajes.service;
+package com.agenciaviajes.agenciaviajes.service;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,7 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.agenciaviajes.Agencia_Viajes.model.cotizacion;
+import com.agenciaviajes.agenciaviajes.model.cotizacion;
 @Service
 public class CotizacionService {
 	private final ArrayList<cotizacion>lista = new ArrayList<cotizacion>();

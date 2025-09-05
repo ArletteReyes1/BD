@@ -1,17 +1,37 @@
 package com.agenciaviajes.agenciaviajes.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "producto")
 public class Productos {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id", unique = true, nullable = false)
 	private Long id;
+	@Column(name = "titulo", nullable = false, unique = true)
     private String titulo;
+	@Column(name = "imagenUrl", nullable = false, unique = true)
     private String imagenUrl;
+	@Column(name = "precio", nullable = false, unique = true)
     private Double precio;
+	@Column(name = "lugares", nullable = false, unique = true)
     private String lugares;
+	@Column(name = "dias", nullable = false, unique = true)
     private Integer dias;
+	@Column(name = "noches", nullable = false, unique = true)
     private Integer noches;
+	@Column(name = "incluye", nullable = false, unique = true)
     private String incluye;
+	@Column(name = "noIncluye", nullable = false, unique = true)
     private String noIncluye;
     
-    private static Long total=0L;
+   
 	public Productos(String titulo, String imagenUrl, Double precio, String lugares, Integer dias, Integer noches,
 			String incluye, String noIncluye) {
 		super();
@@ -23,14 +43,12 @@ public class Productos {
 		this.noches = noches;
 		this.incluye = incluye;
 		this.noIncluye = noIncluye;
-		Productos.total++;
-		this.id= Productos.total;
+	
 	}//constructor
 
 
 	public Productos() {
-		Productos.total++;
-		this.id= Productos.total;
+	
 	}//ProductosId constructor vacío
 
 

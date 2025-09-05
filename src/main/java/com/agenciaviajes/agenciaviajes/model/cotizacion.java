@@ -1,35 +1,46 @@
 package com.agenciaviajes.agenciaviajes.model;
 
-public class cotizacion {
-//PARÁMETROS
-	private Long idCotizacion;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="cotizacion")
+public class Cotizacion {
+	@Id
+	@GeneratedValue (strategy= GenerationType.IDENTITY)
+	@Column(name="id_cotizacion", unique=true, nullable=false)
+	private Long id_cotizacion;
+	@Column(nullable=false)
     private String fecha;
-    private Long fkIdUsuario;
+	@ManyToOne(optional=false)
+	@JoinColumn(name="fkidusuario", nullable=false)
+	private Usuario usuario;
 	
   //CONSTRUCTOR
-    private static Long total=0L;
-    public cotizacion(String fecha, Long fkIdUsuario) {
+   
+    public Cotizacion(String fecha, Usuario usuario) {
 		super();
 		this.fecha = fecha;
-		this.fkIdUsuario = fkIdUsuario;
-		cotizacion.total++;
-		this.idCotizacion= cotizacion.total;
+		this.usuario = usuario;
 	}//constructor
 
-  	public cotizacion() {
-		super();
-		cotizacion.total++;
-		this.idCotizacion= cotizacion.total;
+  	public Cotizacion() {
 	}//constructor vacío
 
 
 	//GETTERS AND SETTERS
 	public Long getIdCotizacion() {
-		return idCotizacion;
+		return id_cotizacion;
 	}//getIdCotizacion
 
 	public void setIdCotizacion(Long idCotizacion) {
-		this.idCotizacion = idCotizacion;
+		this.id_cotizacion = idCotizacion;
 	}//setIdCotizacion
 
 	public String getFecha() {
@@ -40,22 +51,23 @@ public class cotizacion {
 		this.fecha = fecha;
 	}//setFecha
 
-	public Long getFkIdUsuario() {
-		return fkIdUsuario;
+	public Usuario getUsuario() {
+		return usuario;
 	}//getFkIdUsuario
 
-	public void setFkIdUsuario(Long fkIdUsuario) {
-		this.fkIdUsuario = fkIdUsuario;
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
 	}//setFkIdUsuario
 
-
-	//TOSTRING
 	@Override
 	public String toString() {
-		return "cotizacion [idCotizacion=" + idCotizacion + ", fecha=" + fecha + ", fkIdUsuario=" + fkIdUsuario
-				+ ", getIdCotizacion()=" + getIdCotizacion() + ", getFecha()=" + getFecha() + ", getFkIdUsuario()="
-				+ getFkIdUsuario() + "]";
-	}//toString
+		return "Cotizacion [id_cotizacion=" + id_cotizacion + ", fecha=" + fecha + ", usuario=" + usuario + "]";
+	}
+
+	
+
+	//TOSTRING
+	
 	
 	
 }//classCotizacion

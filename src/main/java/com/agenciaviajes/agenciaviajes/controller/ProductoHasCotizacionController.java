@@ -3,9 +3,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.agenciaviajes.agenciaviajes.model.Cotizacion;
+import com.agenciaviajes.agenciaviajes.model.Productos;
 import com.agenciaviajes.agenciaviajes.model.ProductosHasCotizacion;
-import com.agenciaviajes.agenciaviajes.model.Usuario;
-import com.agenciaviajes.agenciaviajes.model.cotizacion;
 import com.agenciaviajes.agenciaviajes.service.ProductoHasCotizacionService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -55,12 +55,11 @@ public ProductosHasCotizacion addProductosHasCotizacion(@RequestBody ProductosHa
 
 //PUT
 @PutMapping (path="{prodId}")
-public ProductosHasCotizacion addProductosHasCotizacion(@PathVariable("prodId")Long id, 
-  @RequestParam(required=false)  Long Id,
-  @RequestParam (required=false) Long fkIdProductos,
-  @RequestParam (required=false) Long fkIdCotizacion)
+public ProductosHasCotizacion updateProductosHasCotizacion(@PathVariable("prodId")Long id, 
+  @RequestParam (required=false) Productos producto,
+  @RequestParam (required=false) Cotizacion cotizacion)
   { /// vamos a pedir todos los parámetros
- return service.addProductosHasCotizacion(id, fkIdProductos, fkIdCotizacion); 
+ return service.updateProductosHasCotizacion(id, producto, cotizacion); 
  }//updateProductosHasCotizacion
 
 

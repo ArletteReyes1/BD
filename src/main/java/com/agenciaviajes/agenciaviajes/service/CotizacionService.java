@@ -1,73 +1,65 @@
 package com.agenciaviajes.agenciaviajes.service;
 
-import java.util.ArrayList;
+
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import com.agenciaviajes.agenciaviajes.model.cotizacion;
+import com.agenciaviajes.agenciaviajes.model.Cotizacion;
+import com.agenciaviajes.agenciaviajes.model.Usuario;
+import com.agenciaviajes.agenciaviajes.repository.CotizacionRepository;
 @Service
 public class CotizacionService {
-	private final ArrayList<cotizacion>lista = new ArrayList<cotizacion>();
-	
+	private final CotizacionRepository repository;
 	@Autowired
-	public CotizacionService() {
-		lista.add(new cotizacion("2025-05-20",(long) 1));
-		lista.add(new cotizacion("2025-06-08",(long) 2));
-		lista.add(new cotizacion("2025-07-15",(long) 3));
-		lista.add(new cotizacion("2025-08-02",(long) 4));
-		lista.add(new cotizacion("2025-08-28",(long) 5));
+	public CotizacionService(CotizacionRepository repository) {
+	this.repository = repository;
 	}//CotizacionService
 	
+	 //-------------------------GET---------------------------------------
+	public List<Cotizacion> getCotizacion(){		
+		return repository.findAll();
+	}//getCotizacion
 	
-	public List<cotizacion> getCotizacion(){		
-		return lista;
-	}
+	public Cotizacion getCotizacion(Long id) {
+		return repository.findById(id).orElseThrow(
+				()-> new IllegalArgumentException("La cotización con el id [" + id + "] no existe")
+				);
+	}//getCotizacion
+//------------------------------DELETE----------------------------------
+	public Cotizacion deleteCotizacion(Long id) {
+		Cotizacion tmpCot = null; //producto temporal, de inicio null y si lo encuentra, lo establece. 
+		if(repository.existsById(id)) {
+			tmpCot = repository.findById(id).get(); //traer el producto
+			repository.deleteById(id);
+		}//id
+		return tmpCot;
+	}//deleteCotizacion
 	
-	public cotizacion getCotizacion(Long id) {
-		cotizacion tmpProd = null; //producto temporal, de inicio null y si lo encuentra, lo establece. 
-		  for(cotizacion cot: lista) {
-		   if(cot.getIdCotizacion()==id) {
-		    tmpProd=cot;
-		    break;
-		   }//if
-		  }//foreach
-		  return tmpProd;
-	}
+//-------------------------------POST----------------------------------------
 
+	public Cotizacion addCotizacion(Cotizacion cotizacion) {
+		Optional <Cotizacion> cot = repository.findByFecha(cotizacion.getFecha() );//regresa el Optional / la bolsa vacia
+		if( cot.isEmpty()) {
+			repository.save(cotizacion);
+		}else {
+			cotizacion=null;
+		}//else
+		return cotizacion;
+	}//addCotizacion
 
-	public cotizacion deleteCotizacion(Long id) {
-		cotizacion tmpProd = null; //producto temporal, de inicio null y si lo encuentra, lo establece. 
-		  for(cotizacion cot: lista) {
-		   if(cot.getIdCotizacion()==id) {
-		    tmpProd=cot;
-		    lista.remove(cot);
-		    break;
-		   }//if
-		  }//foreach
-		  return tmpProd;
-	}
-
-
-	public cotizacion addCotizacion(cotizacion cotizacion) {
-			  lista.add(cotizacion);
-			  return cotizacion;
-			 }//addCotizacion
-
-
-	public cotizacion updateCotizacion(Long id, String fecha, Long fkIdUsuario) {
-		cotizacion tmpProd = null; 
-		  for(cotizacion cot: lista) {
-		   if(cot.getIdCotizacion()==id) {
-		    tmpProd=cot;
-		    if(fecha!=null) cot.setFecha(fecha);
-		    if(fkIdUsuario!=null) cot.setFkIdUsuario(fkIdUsuario);
-		    tmpProd=cot;
-		    break;
-		   }//if
-		  }//foreach
-		  return tmpProd;
+//---------------------------PUT----------------------------------------
+	public Cotizacion updateCotizacion(Long id, String fecha, Usuario usuario) {
+		Cotizacion tmpCot = null; 
+		if(repository.existsById(id)) {
+			Cotizacion cot = repository.findById(id).get();
+				if(fecha!=null) cot.setFecha(fecha);
+				if(usuario!=null) cot.setUsuario(usuario);
+				repository.save(cot);
+				tmpCot=cot;
+			}//if
+		return tmpCot;
 	}//updateCotizacion
 }//class CotizacionService
 

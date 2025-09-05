@@ -13,15 +13,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+
+import com.agenciaviajes.agenciaviajes.model.Cotizacion;
 import com.agenciaviajes.agenciaviajes.model.Usuario;
-import com.agenciaviajes.agenciaviajes.model.cotizacion;
 import com.agenciaviajes.agenciaviajes.service.CotizacionService;
 
 @RestController
 @RequestMapping(path="/api/Cotizacion/") //http://localhost:8080/api/Cotizacion/
 public class CotizacionController {
 	private final CotizacionService service;
-	
 	@Autowired
 	public CotizacionController(CotizacionService service) {
 		this.service = service;
@@ -29,36 +29,35 @@ public class CotizacionController {
 
 	//GET
 	@GetMapping
-	public List<cotizacion> geCotizacion(){
+	public List<Cotizacion> geCotizacion(){
 		return service.getCotizacion();
 	}//getCotizacion
 	
 	@GetMapping (path="{cotId}")  //http://localhost:8080/api/Cotizacion/1
-		public cotizacion getCotizacion(@PathVariable("cotId")Long id){
+		public Cotizacion getCotizacion(@PathVariable("cotId")Long id){
 		return service.getCotizacion(id);
 	}//getCotizacion
 
 	
 	//DELETE
 	@DeleteMapping (path="{cotId}")  //http://localhost:8080/api/Cotizacion/1
-	public cotizacion deleteCotizacion(@PathVariable("cotId")Long id){
+	public Cotizacion deleteCotizacion(@PathVariable("cotId")Long id){
 	return service.deleteCotizacion(id);
 	}//getCotizacion
 	
 	//POST
 	@PostMapping 
-	 public cotizacion addCotizacion(@RequestBody cotizacion cotizacion) { // el parametro sera Producto, lo voy a solicitar en el cuerpo de la solicitud. y necesito @RequestBody
+	 public Cotizacion addCotizacion(@RequestBody Cotizacion cotizacion) { // el parametro sera Producto, lo voy a solicitar en el cuerpo de la solicitud. y necesito @RequestBody
 	  //usamos el contrsuctor vacio que le pusimos a Cotizacion
 	  return service.addCotizacion(cotizacion);// Crear el metodo en ProductoService.
 	 }//addCotizacion
 	
 	//PUT
 	@PutMapping (path="{cotId}")
-	 public cotizacion updateCotizacion(@PathVariable("cotId")Long id, 
+	 public Cotizacion updateCotizacion(@PathVariable("cotId")Long id, 
 	   @RequestParam(required=false)  String fecha,
-	   @RequestParam (required=false) Long fkIdUsuario)
-	   { /// vamos a pedir todos los parámetros
-	  return service.updateCotizacion(id, fecha, fkIdUsuario); 
+	   @RequestParam (required=false) Usuario usuario)  { /// vamos a pedir todos los parámetros
+	  return service.updateCotizacion(id, fecha, usuario); 
 	  }//updateCotizacion
 	
 	

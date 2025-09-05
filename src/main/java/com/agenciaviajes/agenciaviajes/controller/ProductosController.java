@@ -11,9 +11,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.agenciaviajes.agenciaviajes.model.Productos;
-import com.agenciaviajes.agenciaviajes.model.ProductosHasCotizacion;
-import com.agenciaviajes.agenciaviajes.model.Usuario;
-import com.agenciaviajes.agenciaviajes.model.cotizacion;
 import com.agenciaviajes.agenciaviajes.service.ProductosService;
 
 import java.util.List;

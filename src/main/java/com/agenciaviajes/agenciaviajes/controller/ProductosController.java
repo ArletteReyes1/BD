@@ -23,7 +23,6 @@ import java.util.List;
 public class ProductosController {
 
 	private final ProductosService service;
-
 	@Autowired
 	public ProductosController(ProductosService service) {
 		this.service = service;
@@ -57,7 +56,7 @@ public class ProductosController {
 	
 	//PUT
 	@PutMapping (path="{prodId}")
-	 public Productos addProductos(@PathVariable("prodId")Long id, 
+	 public Productos updateProductos(@PathVariable("prodId")Long id, 
 	   @RequestParam(required=false)  String titulo,
 	   @RequestParam (required=false) String imagenUrl,
 	   @RequestParam (required=false) Double precio,
@@ -67,7 +66,7 @@ public class ProductosController {
 	   @RequestParam (required=false) String incluye,
 	   @RequestParam (required=false) String noIncluye)
 	   { /// vamos a pedir todos los parámetros
-	  return service.addProductos(id, titulo, imagenUrl, precio, lugares, dias, noches, incluye, noIncluye); 
+	  return service.updateProductos(id, titulo, imagenUrl, precio, lugares, dias, noches, incluye, noIncluye); 
 	  }//updateproductos
 	
 }//classProductosController

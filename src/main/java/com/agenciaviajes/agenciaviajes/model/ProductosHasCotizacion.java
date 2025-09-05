@@ -1,23 +1,35 @@
 package com.agenciaviajes.agenciaviajes.model;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+@Entity
+@Table (name="ProductosHasCotizacion")
 public class ProductosHasCotizacion {
-//PARÁMETROS
+@Id
+@GeneratedValue (strategy= GenerationType.IDENTITY)
+@Column(name="id", unique=true, nullable=false)
 	 private Long Id;
-	 private Long fkIdProductos;
-	 private Long fkIdCotizacion;
+@ManyToOne(optional = false)
+@JoinColumn(name = "fk_id_cotizacion", nullable = false)
+private Cotizacion cotizacion;
+@ManyToOne(optional = false)
+@JoinColumn(name = "fk_id_producto", nullable = false)
+private Productos producto;
 	
 //CONSTRUCTOR
-	 private static Long total=0L;
-	 public ProductosHasCotizacion(Long fkIdProductos, Long fkIdCotizacion) {
+	 public ProductosHasCotizacion(Productos producto, Cotizacion cotizacion) {
 		super();
-		this.fkIdProductos = fkIdProductos;
-		this.fkIdCotizacion = fkIdCotizacion;
-		ProductosHasCotizacion.total++;
-		this.Id= ProductosHasCotizacion.total;
+		this.producto = producto;
+		this.cotizacion = cotizacion;
 	}//constructor
+	 
 	public ProductosHasCotizacion() {
-		super();
-		ProductosHasCotizacion.total++;
-		this.Id= ProductosHasCotizacion.total;
 	}//constructor vacío
 	
 
@@ -28,25 +40,26 @@ public class ProductosHasCotizacion {
 		return Id;
 	}//getId
 	
-	public Long getFkIdProductos() {
-		return fkIdProductos;
+	public Productos getproducto() {
+		return producto;
 	}//getFkIdProductos
-	public void setFkIdProductos(Long fkIdProductos) {
-		this.fkIdProductos = fkIdProductos;
+	public void setProducto(Productos producto) {
+		this.producto = producto;
 	}//setFkIdProductos
-	public Long getFkIdCotizacion() {
-		return fkIdCotizacion;
+	public Cotizacion getCotizacion() {
+		return cotizacion;
 	}//getFkIdCotizacion
-	public void setFkIdCotizacion(Long fkIdCotizacion) {
-		this.fkIdCotizacion = fkIdCotizacion;
+	public void setCotizacion(Cotizacion cotizacion) {
+		this.cotizacion = cotizacion;
+	}
+
+	@Override
+	public String toString() {
+		return "ProductosHasCotizacion [Id=" + Id + ", cotizacion=" + cotizacion + ", producto=" + producto + "]";
 	}
 	
 	//MÉTODO TO STRING
-	@Override
-	public String toString() {
-		return "ProductosHasCotizacion [Id=" + Id + ", fkIdProductos=" + fkIdProductos + ", fkIdCotizacion="
-				+ fkIdCotizacion + "]";
-	}//setFkIdCotizacion
+	
 	
 
 	

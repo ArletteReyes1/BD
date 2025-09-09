@@ -15,18 +15,16 @@ public class ProductosHasCotizacion {
 @GeneratedValue (strategy= GenerationType.IDENTITY)
 @Column(name="id", unique=true, nullable=false)
 	 private Long Id;
-@ManyToOne(optional = false)
-@JoinColumn(name = "fk_id_cotizacion", nullable = false)
-private Cotizacion cotizacion;
-@ManyToOne(optional = false)
-@JoinColumn(name = "fk_id_producto", nullable = false)
-private Productos producto;
+@Column(name = "fkIdProductos", nullable = false)
+private Long fkIdProductos;
+@Column(name = "fkIdCotizacion", nullable = false)
+private Long fkIdCotizacion;
 	
 //CONSTRUCTOR
-	 public ProductosHasCotizacion(Productos producto, Cotizacion cotizacion) {
+	 public ProductosHasCotizacion( Long fkIdProductos, Long fkIdCotizacion) {
 		super();
-		this.producto = producto;
-		this.cotizacion = cotizacion;
+		this.fkIdProductos = fkIdProductos;
+		this.fkIdCotizacion = fkIdCotizacion;
 	}//constructor
 	 
 	public ProductosHasCotizacion() {
@@ -40,22 +38,22 @@ private Productos producto;
 		return Id;
 	}//getId
 	
-	public Productos getproducto() {
-		return producto;
+	public Long getFkIdProductos() {
+		return fkIdProductos;
 	}//getFkIdProductos
-	public void setProducto(Productos producto) {
-		this.producto = producto;
+	public void setFkIdProductos(Long fkIdProductos) {
+		this.fkIdProductos = fkIdProductos;
 	}//setFkIdProductos
-	public Cotizacion getCotizacion() {
-		return cotizacion;
+	public Long getFkIdCotizacion() {
+		return fkIdCotizacion;
 	}//getFkIdCotizacion
-	public void setCotizacion(Cotizacion cotizacion) {
-		this.cotizacion = cotizacion;
+	public void setFkIdCotizacion(Long fkIdCotizacion) {
+		this.fkIdCotizacion = fkIdCotizacion;
 	}
 
 	@Override
 	public String toString() {
-		return "ProductosHasCotizacion [Id=" + Id + ", cotizacion=" + cotizacion + ", producto=" + producto + "]";
+		return "ProductosHasCotizacion [Id=" + Id + ", cotizacion=" + fkIdCotizacion + ", producto=" + fkIdProductos + "]";
 	}
 	
 	//MÉTODO TO STRING

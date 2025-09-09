@@ -42,20 +42,20 @@ public class CotizacionService {
 	public Cotizacion addCotizacion(Cotizacion cotizacion) {
 		Optional <Cotizacion> cot = repository.findByFecha(cotizacion.getFecha() );//regresa el Optional / la bolsa vacia
 		if( cot.isEmpty()) {
-			repository.save(cotizacion);
+			return repository.save(cotizacion);
 		}else {
-			cotizacion=null;
+			System.out.println("La cotizacion [" + cotizacion.getFecha() + "] ya se encuentra registrada");
+			return null;
 		}//else
-		return cotizacion;
 	}//addCotizacion
 
 //---------------------------PUT----------------------------------------
-	public Cotizacion updateCotizacion(Long id, String fecha, Usuario usuario) {
+	public Cotizacion updateCotizacion(Long id, String fecha, Long fkIdUsuario ) {//Long fkIdUsuario esto iba dentro del parentesis
 		Cotizacion tmpCot = null; 
 		if(repository.existsById(id)) {
 			Cotizacion cot = repository.findById(id).get();
 				if(fecha!=null) cot.setFecha(fecha);
-				if(usuario!=null) cot.setUsuario(usuario);
+				if(fkIdUsuario!=null) cot.setFkIdUsuario(fkIdUsuario);
 				repository.save(cot);
 				tmpCot=cot;
 			}//if

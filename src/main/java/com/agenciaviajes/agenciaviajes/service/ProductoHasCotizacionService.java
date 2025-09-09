@@ -50,12 +50,12 @@ public class ProductoHasCotizacionService {
 		return productosHasCotizacion;
 	}//addProduct
 		
-	public ProductosHasCotizacion updateProductosHasCotizacion(Long id, Productos producto, Cotizacion cotizacion) {
+	public ProductosHasCotizacion updateProductosHasCotizacion(Long id, Long fkIdProductos, Long fkIdCotizacion) {
 		ProductosHasCotizacion tmpProdCot = null; 
 		if(repository.existsById(id)) {
 			ProductosHasCotizacion prodCot = repository.findById(id).get();
-				if(producto!=null) prodCot.setProducto(producto);
-				if(cotizacion!=null) prodCot.setCotizacion(cotizacion);
+				if(fkIdProductos!=null) prodCot.setFkIdProductos(fkIdProductos);
+				if(fkIdCotizacion!=null) prodCot.setFkIdCotizacion(fkIdCotizacion);
 				repository.save(prodCot);
 				tmpProdCot=prodCot;
 			}//if

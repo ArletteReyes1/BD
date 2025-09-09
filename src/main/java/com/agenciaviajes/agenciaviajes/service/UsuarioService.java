@@ -48,22 +48,22 @@ public class UsuarioService {
 	}
 
 	public Usuario addUsuario(Long id, String tipo, String nombre, String correo, String telefono, String contrasena) {
-		Usuario tmpProd = null;
+		Usuario tmpUser = null;
 		if (repository.existsById(id)) {
-			tmpProd = repository.findById(id).get();
+			tmpUser = repository.findById(id).get();
 			if (tipo != null)
-				tmpProd.setTipo(tipo);
+				tmpUser.setTipo(tipo);
 			if (nombre != null)
-				tmpProd.setNombre(nombre);
+				tmpUser.setNombre(nombre);
 			if (correo != null)
-				tmpProd.setCorreo(correo);
+				tmpUser.setCorreo(correo);
 			if (telefono != null)
-				tmpProd.setTelefono(telefono);
+				tmpUser.setTelefono(telefono);
 			if (contrasena != null)
-				tmpProd.setContrasena(contrasena);
-			repository.save(tmpProd); // guardar cambios en la base de datos
+				tmpUser.setContrasena(contrasena);
+			repository.save(tmpUser); // guardar cambios en la base de datos
 		}
-		return tmpProd;
+		return tmpUser;
 	}// updateUsuario
 
 	public Usuario updateUsuario(Long id, ChangePassword changePassword) {

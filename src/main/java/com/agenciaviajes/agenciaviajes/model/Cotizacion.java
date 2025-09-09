@@ -1,12 +1,16 @@
 package com.agenciaviajes.agenciaviajes.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -18,23 +22,32 @@ public class Cotizacion {
 	private Long id_cotizacion;
 	@Column(nullable=false)
     private String fecha;
-	@ManyToOne(optional=false)
-	@JoinColumn(name="fkidusuario", nullable=false)
-	private Usuario usuario;
+	@Column (nullable=false)
+	private Long fkIdUsuario;
+
 	
   //CONSTRUCTOR
+	//@OneToMany(cascade=CascadeType.ALL)
+	//@JoinColumn (name="cotizacionid", referencedColumnName= "id_cotizacion")
+	//List<Usuario> usuarios = new ArrayList<Usuario>();
    
-    public Cotizacion(String fecha, Usuario usuario) {
+    public Cotizacion(String fecha, Long fkIdUsuario) {
 		super();
 		this.fecha = fecha;
-		this.usuario = usuario;
+		//this.fkIdUsuario = fkIdUsuario;
 	}//constructor
 
   	public Cotizacion() {
+  		
 	}//constructor vacío
+  	
+  	//public List<Usuario> getUsuarios(){
+	//	return usuarios;
+	//}//getPRoductos
 
 
 	//GETTERS AND SETTERS
+  	
 	public Long getIdCotizacion() {
 		return id_cotizacion;
 	}//getIdCotizacion
@@ -51,17 +64,16 @@ public class Cotizacion {
 		this.fecha = fecha;
 	}//setFecha
 
-	public Usuario getUsuario() {
-		return usuario;
+	public Long getFkIdUsuario() {
+		return fkIdUsuario;
 	}//getFkIdUsuario
 
-	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;
-	}//setFkIdUsuario
+	public void setFkIdUsuario(Long fkIdUsuario) {
+		this.fkIdUsuario = fkIdUsuario;}//setFkIdUsuario
 
 	@Override
 	public String toString() {
-		return "Cotizacion [id_cotizacion=" + id_cotizacion + ", fecha=" + fecha + ", usuario=" + usuario + "]";
+		return "Cotizacion [id_cotizacion=" + id_cotizacion + ", fecha=" + fecha + "]";
 	}
 
 	

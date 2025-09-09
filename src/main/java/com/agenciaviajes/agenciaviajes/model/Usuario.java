@@ -34,6 +34,8 @@ public class Usuario {
 		this.contrasena = contrasena;
 	}// constructor
 
+	
+
 	public Usuario() {
 	} // constructor vacio
 

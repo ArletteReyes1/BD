@@ -27,7 +27,7 @@ public class CotizacionController {
 		this.service = service;
 	}//constructor
 
-	//GET
+	//------------------------------------GET
 	@GetMapping
 	public List<Cotizacion> geCotizacion(){
 		return service.getCotizacion();
@@ -39,26 +39,27 @@ public class CotizacionController {
 	}//getCotizacion
 
 	
-	//DELETE
+	//-----------------------------------DELETE
 	@DeleteMapping (path="{cotId}")  //http://localhost:8080/api/Cotizacion/1
 	public Cotizacion deleteCotizacion(@PathVariable("cotId")Long id){
 	return service.deleteCotizacion(id);
 	}//getCotizacion
 	
-	//POST
+	//-----------------------------------POST
 	@PostMapping 
-	 public Cotizacion addCotizacion(@RequestBody Cotizacion cotizacion) { // el parametro sera Producto, lo voy a solicitar en el cuerpo de la solicitud. y necesito @RequestBody
-	  //usamos el contrsuctor vacio que le pusimos a Cotizacion
-	  return service.addCotizacion(cotizacion);// Crear el metodo en ProductoService.
+	 public Cotizacion addCotizacion(@RequestBody Cotizacion cotizacion) { 
+	  return service.addCotizacion(cotizacion);
 	 }//addCotizacion
 	
-	//PUT
+	//----------------------------------PUT
 	@PutMapping (path="{cotId}")
 	 public Cotizacion updateCotizacion(@PathVariable("cotId")Long id, 
 	   @RequestParam(required=false)  String fecha,
-	   @RequestParam (required=false) Usuario usuario)  { /// vamos a pedir todos los parámetros
-	  return service.updateCotizacion(id, fecha, usuario); 
+	   @RequestParam(required=false) Long cotid,
+	 @RequestParam (required=false) Long fkIdUsuario)  { 
+	  return service.updateCotizacion(id, fecha, fkIdUsuario); //fkIdUsuario
 	  }//updateCotizacion
+	
 	
 	
 }//classCotizacionController

@@ -34,11 +34,6 @@ public class Usuario {
 		this.contrasena = contrasena;
 	}// constructor
 
-<<<<<<< HEAD
-=======
-	
-
->>>>>>> APRcambios
 	public Usuario() {
 	} // constructor vacio
 

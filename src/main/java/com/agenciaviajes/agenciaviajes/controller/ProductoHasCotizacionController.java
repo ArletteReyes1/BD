@@ -47,26 +47,18 @@ public ProductosHasCotizacion deleteProductos(@PathVariable("prodId")Long id) {
 
 //POST
 @PostMapping 
-public ProductosHasCotizacion addProductosHasCotizacion(@RequestBody ProductosHasCotizacion ProductosHasCotizacion) { // el parametro sera Producto, lo voy a solicitar en el cuerpo de la solicitud. y necesito @RequestBody
- //usamos el contrsuctor vacio que le pusimos a Cotizacion
- return service.addProductosHasCotizacion(ProductosHasCotizacion);// Crear el metodo en ProductoService.
+public ProductosHasCotizacion addProductosHasCotizacion(@RequestBody ProductosHasCotizacion ProductosHasCotizacion) { 
+ return service.addProductosHasCotizacion(ProductosHasCotizacion);
 }//addCotizacion
 
 
 //PUT
 @PutMapping (path="{prodId}")
 public ProductosHasCotizacion updateProductosHasCotizacion(@PathVariable("prodId")Long id, 
-<<<<<<< HEAD
   @RequestParam (required=false) Productos producto,
   @RequestParam (required=false) Cotizacion cotizacion)
   { /// vamos a pedir todos los parámetros
  return service.updateProductosHasCotizacion(id, producto, cotizacion); 
-=======
-  @RequestParam (required=false)  Long fkIdProductos,
-  @RequestParam (required=false)  Long fkIdCotizacion)
-  { /// vamos a pedir todos los parámetros
- return service.updateProductosHasCotizacion(id, fkIdProductos, fkIdCotizacion); 
->>>>>>> APRcambios
  }//updateProductosHasCotizacion
 
 

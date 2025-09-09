@@ -56,10 +56,17 @@ public ProductosHasCotizacion addProductosHasCotizacion(@RequestBody ProductosHa
 //PUT
 @PutMapping (path="{prodId}")
 public ProductosHasCotizacion updateProductosHasCotizacion(@PathVariable("prodId")Long id, 
+<<<<<<< HEAD
   @RequestParam (required=false) Productos producto,
   @RequestParam (required=false) Cotizacion cotizacion)
   { /// vamos a pedir todos los parámetros
  return service.updateProductosHasCotizacion(id, producto, cotizacion); 
+=======
+  @RequestParam (required=false)  Long fkIdProductos,
+  @RequestParam (required=false)  Long fkIdCotizacion)
+  { /// vamos a pedir todos los parámetros
+ return service.updateProductosHasCotizacion(id, fkIdProductos, fkIdCotizacion); 
+>>>>>>> APRcambios
  }//updateProductosHasCotizacion
 
 

@@ -15,6 +15,7 @@ public class ProductosHasCotizacion {
 @GeneratedValue (strategy= GenerationType.IDENTITY)
 @Column(name="id", unique=true, nullable=false)
 	 private Long Id;
+<<<<<<< HEAD
 @ManyToOne(optional = false)
 @JoinColumn(name = "fk_id_cotizacion", nullable = false)
 private Cotizacion cotizacion;
@@ -27,6 +28,18 @@ private Productos producto;
 		super();
 		this.producto = producto;
 		this.cotizacion = cotizacion;
+=======
+@Column(name = "fkIdProductos", nullable = false)
+private Long fkIdProductos;
+@Column(name = "fkIdCotizacion", nullable = false)
+private Long fkIdCotizacion;
+	
+//CONSTRUCTOR
+	 public ProductosHasCotizacion( Long fkIdProductos, Long fkIdCotizacion) {
+		super();
+		this.fkIdProductos = fkIdProductos;
+		this.fkIdCotizacion = fkIdCotizacion;
+>>>>>>> APRcambios
 	}//constructor
 	 
 	public ProductosHasCotizacion() {
@@ -57,6 +70,14 @@ private Productos producto;
 	public String toString() {
 		return "ProductosHasCotizacion [Id=" + Id + ", cotizacion=" + cotizacion + ", producto=" + producto + "]";
 	}
+<<<<<<< HEAD
+=======
+
+	@Override
+	public String toString() {
+		return "ProductosHasCotizacion [Id=" + Id + ", cotizacion=" + fkIdCotizacion + ", producto=" + fkIdProductos + "]";
+	}
+>>>>>>> APRcambios
 	
 	//MÉTODO TO STRING
 	

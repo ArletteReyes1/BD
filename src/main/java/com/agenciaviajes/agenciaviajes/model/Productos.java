@@ -16,6 +16,7 @@ public class Productos {
 	private Long id;
 	@Column(name = "titulo", nullable = false, unique = true)
     private String titulo;
+<<<<<<< HEAD
 	@Column(name = "imagenUrl", nullable = false, unique = true)
     private String imagenUrl;
 	@Column(name = "precio", nullable = false, unique = true)
@@ -29,6 +30,21 @@ public class Productos {
 	@Column(name = "incluye", nullable = false, unique = true)
     private String incluye;
 	@Column(name = "noIncluye", nullable = false, unique = true)
+=======
+	@Column(name = "imagenUrl", nullable = false)
+    private String imagenUrl;
+	@Column(name = "precio", nullable = false)
+    private Double precio;
+	@Column(name = "lugares", nullable = false)
+    private String lugares;
+	@Column(name = "dias", nullable = false)
+    private Integer dias;
+	@Column(name = "noches", nullable = false)
+    private Integer noches;
+	@Column(name = "incluye", nullable = false)
+    private String incluye;
+	@Column(name = "noIncluye", nullable = false)
+>>>>>>> APRcambios
     private String noIncluye;
     
    

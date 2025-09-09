@@ -48,6 +48,7 @@ public class UsuarioService {
 	}
 
 	public Usuario addUsuario(Long id, String tipo, String nombre, String correo, String telefono, String contrasena) {
+<<<<<<< HEAD
 		Usuario tmpProd = null;
 		if (repository.existsById(id)) {
 			tmpProd = repository.findById(id).get();
@@ -64,6 +65,24 @@ public class UsuarioService {
 			repository.save(tmpProd); // guardar cambios en la base de datos
 		}
 		return tmpProd;
+=======
+		Usuario tmpUser = null;
+		if (repository.existsById(id)) {
+			tmpUser = repository.findById(id).get();
+			if (tipo != null)
+				tmpUser.setTipo(tipo);
+			if (nombre != null)
+				tmpUser.setNombre(nombre);
+			if (correo != null)
+				tmpUser.setCorreo(correo);
+			if (telefono != null)
+				tmpUser.setTelefono(telefono);
+			if (contrasena != null)
+				tmpUser.setContrasena(contrasena);
+			repository.save(tmpUser); // guardar cambios en la base de datos
+		}
+		return tmpUser;
+>>>>>>> APRcambios
 	}// updateUsuario
 
 	public Usuario updateUsuario(Long id, ChangePassword changePassword) {

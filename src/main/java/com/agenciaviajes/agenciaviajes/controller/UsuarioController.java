@@ -61,7 +61,11 @@ public class UsuarioController {
 			@RequestParam(required = false) String nombre,
 			@RequestParam(required = false) String correo,
 			@RequestParam(required = false) String telefono,
+<<<<<<< HEAD
 			@RequestParam(required = false) String contrasena) { /// vamos a pedir todos los parámetros
+=======
+			@RequestParam(required = false) String contrasena) { //
+>>>>>>> APRcambios
 		return service.addUsuario(id, tipo, nombre, correo, telefono, contrasena);
 	}// updateUsuario
 

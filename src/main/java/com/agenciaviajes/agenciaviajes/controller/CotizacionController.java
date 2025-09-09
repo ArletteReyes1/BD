@@ -47,28 +47,17 @@ public class CotizacionController {
 	
 	//-----------------------------------POST
 	@PostMapping 
-<<<<<<< HEAD
-	 public Cotizacion addCotizacion(@RequestBody Cotizacion cotizacion) { // el parametro sera Producto, lo voy a solicitar en el cuerpo de la solicitud. y necesito @RequestBody
-	  //usamos el contrsuctor vacio que le pusimos a Cotizacion
-	  return service.addCotizacion(cotizacion);// Crear el metodo en ProductoService.
-=======
 	 public Cotizacion addCotizacion(@RequestBody Cotizacion cotizacion) { 
 	  return service.addCotizacion(cotizacion);
->>>>>>> APRcambios
 	 }//addCotizacion
 	
 	//----------------------------------PUT
 	@PutMapping (path="{cotId}")
 	 public Cotizacion updateCotizacion(@PathVariable("cotId")Long id, 
 	   @RequestParam(required=false)  String fecha,
-<<<<<<< HEAD
-	   @RequestParam (required=false) Usuario usuario)  { /// vamos a pedir todos los parámetros
-	  return service.updateCotizacion(id, fecha, usuario); 
-=======
 	   @RequestParam(required=false) Long cotid,
-	 @RequestParam (required=false) Long fkIdUsuario)  { 
+	   @RequestParam (required=false) Long fkIdUsuario)  { 
 	  return service.updateCotizacion(id, fecha, fkIdUsuario); //fkIdUsuario
->>>>>>> APRcambios
 	  }//updateCotizacion
 	
 	

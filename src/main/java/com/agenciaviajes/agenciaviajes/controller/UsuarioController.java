@@ -14,8 +14,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.agenciaviajes.agenciaviajes.dto.ChangePassword;
 import com.agenciaviajes.agenciaviajes.model.Usuario;
-import com.agenciaviajes.agenciaviajes.model.ChangePassword;
 import com.agenciaviajes.agenciaviajes.service.UsuarioService;
 
 @RestController

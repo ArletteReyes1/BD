@@ -8,16 +8,22 @@ import org.springframework.stereotype.Service;
 import com.agenciaviajes.agenciaviajes.model.Cotizacion;
 import com.agenciaviajes.agenciaviajes.model.Productos;
 import com.agenciaviajes.agenciaviajes.model.ProductosHasCotizacion;
+import com.agenciaviajes.agenciaviajes.repository.CotizacionRepository;
+import com.agenciaviajes.agenciaviajes.repository.ProductoRepository;
 import com.agenciaviajes.agenciaviajes.repository.ProductosHasCotizacionRepository;
 
 
 @Service
 public class ProductoHasCotizacionService {
 	private final ProductosHasCotizacionRepository repository;
+	private final ProductoRepository productoRepository;
+	private final CotizacionRepository cotizacionRepository;
 
 @Autowired
-    public ProductoHasCotizacionService(ProductosHasCotizacionRepository repository) {
+    public ProductoHasCotizacionService(ProductosHasCotizacionRepository repository, ProductoRepository productoRepository, CotizacionRepository cotizacionRepository) {
 	this.repository = repository;
+	this.productoRepository  = productoRepository;
+	this.cotizacionRepository = cotizacionRepository;
 }//constructor
     // 
     public List<ProductosHasCotizacion> getProductosHasCotizacion() {
@@ -41,8 +47,8 @@ public class ProductoHasCotizacionService {
 	}//deleteProduct
 
 	public ProductosHasCotizacion addProductosHasCotizacion(ProductosHasCotizacion productosHasCotizacion) {
-		Optional <ProductosHasCotizacion> prodCot = repository.findById(productosHasCotizacion.getId() );//regresa el Optional / la bolsa vacia
-		if( prodCot.isEmpty()) {
+		
+		if(( productoRepository.existsById(productosHasCotizacion.getProducto().getId()) ) && (cotizacionRepository.existsById(productosHasCotizacion.getCotizacion().getIdCotizacion()))) {
 			repository.save(productosHasCotizacion);
 		}else {
 			productosHasCotizacion=null;

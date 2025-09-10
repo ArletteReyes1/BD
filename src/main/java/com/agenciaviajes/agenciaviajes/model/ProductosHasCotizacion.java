@@ -15,16 +15,17 @@ public class ProductosHasCotizacion {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", unique = true, nullable = false)
     private Long id;
 
     // FK hacia productos
     @ManyToOne
-    @JoinColumn(name = "fk_id_productos", nullable = false)
+    @JoinColumn(name = "fk_id_productos")
     private Productos producto;
 
     // FK hacia cotizacion
     @ManyToOne
-    @JoinColumn(name = "fk_id_cotizacion", nullable = false)
+    @JoinColumn(name = "fk_id_cotizacion")
     private Cotizacion cotizacion;
 
     public ProductosHasCotizacion(Long id, Productos producto, Cotizacion cotizacion) {

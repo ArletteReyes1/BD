@@ -11,6 +11,6 @@ import com.agenciaviajes.agenciaviajes.model.Usuario;
 public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
 
   Optional<Usuario> findByCorreo(String correo);
-  Optional<Usuario>  findByPassword(String contrasena);
+  Optional<Usuario>  findByContrasena(String contrasena);
 
 }

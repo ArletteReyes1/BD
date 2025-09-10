@@ -42,9 +42,9 @@ public class UsuarioService {
 	public Usuario addUsuario(Usuario usuario) {
 		Optional<Usuario> Usu = repository.findByCorreo(usuario.getCorreo());
 		if (Usu.isEmpty()) {
+			usuario.setContrasena(encoder.encode(usuario.getContrasena()));		
 			return repository.save(usuario);
 		} else {
-			System.out.println("El usuario [" + usuario.getCorreo() + "] ya se encuentra registrado");
 			return null;
 		}
 	}

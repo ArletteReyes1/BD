@@ -32,7 +32,7 @@ public class UsuarioController {
 	// GET
 	@GetMapping
 	public List<Usuario> getUsuarios() {
-		return service.getUsuarios();
+		return service.getAllUsuario();
 	}// getUsuarios
 
 	@GetMapping(path = "{userId}") // http://localhost:8080/api/Usuarios/1
@@ -48,21 +48,19 @@ public class UsuarioController {
 
 	// POST
 	@PostMapping
-	public Usuario addUsuario(@RequestBody Usuario usuario) { // el parametro sera Producto, lo voy a solicitar en el
-																														// cuerpo de la solicitud. y necesito @RequestBody
-		// usamos el contrsuctor vacio que le pusimos a Cotizacion
+	public Usuario addUsuario(@RequestBody Usuario usuario) { 
 		return service.addUsuario(usuario);// Crear el metodo en ProductoService.
 	}// addUsuario
 
 	// PUT
 	@PutMapping(path = "{userId}")
-	public Usuario addUsuario(@PathVariable("userId") Long id,
+	public Usuario updateUsuario(@PathVariable("userId") Long id,
 			@RequestParam(required = false) String tipo,
 			@RequestParam(required = false) String nombre,
 			@RequestParam(required = false) String correo,
 			@RequestParam(required = false) String telefono,
 			@RequestParam(required = false) String contrasena) { /// vamos a pedir todos los parámetros
-		return service.addUsuario(id, tipo, nombre, correo, telefono, contrasena);
+		return service.updateUsuario(id, tipo, nombre, correo, telefono, contrasena);
 	}// updateUsuario
 
 	// PUT - Cambio de contraseña específico

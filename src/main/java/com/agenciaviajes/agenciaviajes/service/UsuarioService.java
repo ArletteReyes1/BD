@@ -19,7 +19,7 @@ public class UsuarioService {
 		this.repository = repository;
 	}// constructor
 
-	public List<Usuario> getUsuarios() {
+	public List<Usuario> getAllUsuario() {
 		return repository.findAll();
 	}// get
 
@@ -29,41 +29,41 @@ public class UsuarioService {
 	}
 
 	public Usuario deleteUsuarios(Long id) {
-		Usuario tmpUsu = null;
+		Usuario Usu = null;
 		if (repository.existsById(id)) {
-			tmpUsu = repository.findById(id).get();
+			Usu = repository.findById(id).get();
 			repository.deleteById(id);
 		}
-		return tmpUsu;
+		return Usu;
 	}
 
 	public Usuario addUsuario(Usuario usuario) {
-		Optional<Usuario> usu = repository.findByCorreo(usuario.getCorreo());
-		if (usu.isEmpty()) {
-			repository.save(usuario);
+		Optional<Usuario> Usu = repository.findByCorreo(usuario.getCorreo());
+		if (Usu.isEmpty()) {
+			return repository.save(usuario);
 		} else {
-			usuario = null;
+			System.out.println("El usuario [" + usuario.getCorreo() + "] ya se encuentra registrado");
+			return null;
 		}
-		return usuario;
 	}
 
-	public Usuario addUsuario(Long id, String tipo, String nombre, String correo, String telefono, String contrasena) {
-		Usuario tmpProd = null;
+	public Usuario updateUsuario(Long id, String tipo, String nombre, String correo, String telefono, String contrasena) {
+		Usuario Usu = null;
 		if (repository.existsById(id)) {
-			tmpProd = repository.findById(id).get();
+			Usu = repository.findById(id).get();
 			if (tipo != null)
-				tmpProd.setTipo(tipo);
+				Usu.setTipo(tipo);
 			if (nombre != null)
-				tmpProd.setNombre(nombre);
+				Usu.setNombre(nombre);
 			if (correo != null)
-				tmpProd.setCorreo(correo);
+				Usu.setCorreo(correo);
 			if (telefono != null)
-				tmpProd.setTelefono(telefono);
+				Usu.setTelefono(telefono);
 			if (contrasena != null)
-				tmpProd.setContrasena(contrasena);
-			repository.save(tmpProd); // guardar cambios en la base de datos
+				Usu.setContrasena(contrasena);
+			repository.save(Usu); // guardar cambios en la base de datos
 		}
-		return tmpProd;
+		return Usu;
 	}// updateUsuario
 
 	public Usuario updateUsuario(Long id, ChangePassword changePassword) {

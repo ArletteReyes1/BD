@@ -57,7 +57,7 @@ public ProductosHasCotizacion addProductosHasCotizacion(@RequestBody ProductosHa
 public ProductosHasCotizacion updateProductosHasCotizacion(@PathVariable("prodId")Long id, 
   @RequestParam (required=false) Productos producto,
   @RequestParam (required=false) Cotizacion cotizacion)
-  { /// vamos a pedir todos los parámetros
+  { // vamos a pedir todos los parámetros
  return service.updateProductosHasCotizacion(id, producto, cotizacion); 
  }//updateProductosHasCotizacion
 

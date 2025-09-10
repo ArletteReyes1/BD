@@ -65,11 +65,12 @@ public class Cotizacion {
 	}//setFecha
 
 	public Long getFkIdUsuario() {
-		return fkIdUsuario;
+		 return fkIdUsuario;
 	}//getFkIdUsuario
 
 	public void setFkIdUsuario(Long fkIdUsuario) {
-		this.fkIdUsuario = fkIdUsuario;}//setFkIdUsuario
+		this.fkIdUsuario = fkIdUsuario;
+	}//setFkIdUsuario
 
 	@Override
 	public String toString() {

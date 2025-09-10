@@ -1,5 +1,6 @@
 package com.agenciaviajes.agenciaviajes.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -15,24 +16,26 @@ public class ProductosHasCotizacion {
 @GeneratedValue (strategy= GenerationType.IDENTITY)
 @Column(name="id", unique=true, nullable=false)
 	 private Long Id;
-@ManyToOne(optional = false)
+@ManyToOne(cascade=CascadeType.ALL)
 @JoinColumn(name = "fk_id_cotizacion", nullable = false)
-private Cotizacion cotizacion;
-@ManyToOne(optional = false)
-@JoinColumn(name = "fk_id_producto", nullable = false)
-private Productos producto;
+private Long fkIdCotizacion;
+
+//@ManyToOne(optional = false)
+//@JoinColumn(name = "fk_id_producto", nullable = false)
+private Long fkIdProducto;
 	
+
+
+
 //CONSTRUCTOR
-	 public ProductosHasCotizacion(Productos producto, Cotizacion cotizacion) {
+	 public ProductosHasCotizacion(Long fkIdProducto, Long fkIdCotizacion) {
 		super();
-		this.producto = producto;
-		this.cotizacion = cotizacion;
+		this.fkIdProducto = fkIdProducto;
+		this.fkIdCotizacion = fkIdProducto;
 	}//constructor
 	 
 	public ProductosHasCotizacion() {
 	}//constructor vacío
-	
-
 	
 //GETTERS AND SETTERS
 	
@@ -40,31 +43,26 @@ private Productos producto;
 		return Id;
 	}//getId
 	
-	public Productos getproducto() {
-		return producto;
+	public Long getproducto() {
+		return fkIdProducto;
 	}//getFkIdProductos
-	public void setProducto(Productos producto) {
-		this.producto = producto;
+	public void setProducto(Long fkIdProducto) {
+		this.fkIdProducto = fkIdProducto;
 	}//setFkIdProductos
-	public Cotizacion getCotizacion() {
-		return cotizacion;
+	public Long getCotizacion() {
+		return fkIdCotizacion;
 	}//getFkIdCotizacion
-	public void setCotizacion(Cotizacion cotizacion) {
-		this.cotizacion = cotizacion;
+	public void setCotizacion(Long fkIdCotizacion) {
+		this.fkIdCotizacion = fkIdCotizacion;
 	}
 
 	@Override
 	public String toString() {
-		return "ProductosHasCotizacion [Id=" + Id + ", cotizacion=" + cotizacion + ", producto=" + producto + "]";
+		return "ProductosHasCotizacion [Id=" + Id + ", fkIdCotizacion=" + fkIdCotizacion + ", fkIdProducto="
+				+ fkIdProducto + "]";
 	}
 
 	
 	//MÉTODO TO STRING
-	
-	
-
-	
-	
-	
 		
 }//classProductosHasCotizacion

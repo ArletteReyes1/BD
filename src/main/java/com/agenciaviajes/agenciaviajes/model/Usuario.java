@@ -1,10 +1,16 @@
 package com.agenciaviajes.agenciaviajes.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -24,7 +30,11 @@ public class Usuario {
 	private String telefono;
 	@Column(name = "contrasena", nullable = false)
 	private String contrasena;
-
+	
+	@OneToMany(cascade=CascadeType.ALL)
+	@JoinColumn(name="fkIdUsuario", referencedColumnName= "id")
+	List<Cotizacion> cotizacion = new ArrayList<Cotizacion>();
+	
 	public Usuario(String tipo, String nombre, String correo, String telefono, String contrasena) {
 		super();
 		this.tipo = tipo;
@@ -37,6 +47,10 @@ public class Usuario {
 	public Usuario() {
 	} // constructor vacio
 
+	public List<Cotizacion> getCotizacion() {
+		return cotizacion;
+	}//getCotizacion
+	
 	public Long getId() {
 		return id;
 	}// traer/devolver id

@@ -1,10 +1,15 @@
 package com.agenciaviajes.agenciaviajes.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -30,6 +35,9 @@ public class Productos {
     private String incluye;
 	@Column(name = "noIncluye", nullable = false, unique = true)
     private String noIncluye;
+	@OneToMany(mappedBy = "producto", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<ProductosHasCotizacion> cotizaciones = new ArrayList<>();
+
     
    
 	public Productos(String titulo, String imagenUrl, Double precio, String lugares, Integer dias, Integer noches,
@@ -51,6 +59,12 @@ public class Productos {
 	
 	}//ProductosId constructor vacío
 
+	 public List<ProductosHasCotizacion> getCotizaciones() {
+	        return cotizaciones;
+	    }
+	    public void setCotizaciones(List<ProductosHasCotizacion> cotizaciones) {
+	        this.cotizaciones = cotizaciones;
+	    }
 
 	public Long getId() {
 		return id;

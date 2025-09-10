@@ -13,6 +13,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+
 @Entity
 @Table(name="cotizacion")
 public class Cotizacion {
@@ -24,6 +25,8 @@ public class Cotizacion {
     private String fecha;
 	@Column (nullable=false)
 	private Long fkIdUsuario;
+	 @OneToMany(mappedBy = "cotizacion", cascade = CascadeType.ALL, orphanRemoval = true)
+	    private List<ProductosHasCotizacion> productos = new ArrayList<>();
 
 	
   //CONSTRUCTOR
@@ -41,6 +44,14 @@ public class Cotizacion {
   		
 	}//constructor vacío
   	
+  	
+  	public List<ProductosHasCotizacion>getProductos(){
+		return productos;
+	}//getPRoductos
+  	
+  	 public void setProductos(List<ProductosHasCotizacion> productos) {
+         this.productos = productos;
+     }
   	//public List<Usuario> getUsuarios(){
 	//	return usuarios;
 	//}//getPRoductos

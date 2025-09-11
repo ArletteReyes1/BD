@@ -1,5 +1,7 @@
 package com.agenciaviajes.agenciaviajes.controller;
+import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -7,6 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -17,6 +20,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping(path="/api/Productos/") //http://localhost:8080/api/Productos/
+@CrossOrigin(origins="*", methods= {RequestMethod.GET, RequestMethod.POST})
 public class ProductosController {
 
 	private final ProductosService service;
@@ -47,7 +51,9 @@ public class ProductosController {
 	//POST
 	@PostMapping 
 	 public Productos addProductos(@RequestBody Productos productos) { // el parametro sera Producto, lo voy a solicitar en el cuerpo de la solicitud. y necesito @RequestBody
-	  //usamos el contrsuctor vacio que le pusimos a Cotizacion
+		System.out.println("addProductos");
+		
+		//usamos el contrsuctor vacio que le pusimos a Cotizacion
 	  return service.addProductos(productos);// Crear el metodo en ProductoService.
 	 }//addProductos
 	

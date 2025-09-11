@@ -44,6 +44,7 @@ public class ProductosService {
 		if( prod.isEmpty()) {
 			repository.save(productos2);
 		}else {
+			System.out.println("El producto ya existe.");
 			productos2=null;
 		}//else
 		return productos2;

@@ -1,0 +1,233 @@
+
+#btnEnviar{
+    margin-top: 50px;
+    margin-block: 30px;
+    display: flex;
+    justify-content: right;
+    
+} 
+#ctcCorreo .row > div:nth-child(1),
+#ctcCorreo .row > div:nth-child(2),
+#ctcWhats .row > div:nth-child(1),
+#ctcWhats .row > div:nth-child(2) {
+  display: inline-flex;       /* Para estar en línea */
+  align-items: center;        /* Centrado vertical */
+  gap: 5px;                   /* Espacio pequeño entre icono y palabra */
+  width: auto !important;     /* Para que no ocupen todo el ancho */
+}
+
+.btn-primary{
+    margin: 30px ;
+    border-color: #27538C;
+    font-family: "Inter", sans-serif !important;
+    font-weight: 800 !important;
+    color: #ffffff;
+    background-color: #27538C !important;
+    border-radius: 25px;
+    padding-left: 35px;
+    padding-right: 35px;
+   
+}
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active {
+  background-color: #F2F2F2 !important; 
+  border-color: #A9D943 !important;
+  color: #000 !important;
+}
+
+@media(max-width:500px){
+    div.container{
+        grid-template-columns: auto;
+        text-align: center;
+    } 
+}
+#ctcCorreo {
+    text-align: center;
+    justify-content: center;
+ 
+}
+
+#ctcWhats {
+    text-align: center;
+}
+#ctcEnlaces{
+    text-align: center;
+}
+#textoSiguenos{
+    text-align: center;
+}
+i{
+    display: flex;
+    margin: auto;
+}
+a {
+  display: block;
+  margin-bottom: auto;
+  text-align: center;
+  color: #000 !important;
+  text-decoration: none !important;
+}
+
+.fa-brands .fa-instagram a{
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.fa-brands .fa-facebook i{
+    margin-left: auto;
+}
+.fa-brands .fa-facebook a{
+    text-align: center;
+}
+.fa-brands .fa-tiktok a{
+    text-align: center;
+}
+
+.fa-brands{
+    text-align: center;
+}
+/* Colores formulario */
+
+#iptName{
+  background-color: rgba(152, 191, 69, 0.4);
+  border: 1px solid rgba(152, 191, 69, 0.8);
+  color: #000;
+}
+#iptEmail{
+  background-color: rgba(152, 191, 69, 0.4);
+  border: 1px solid rgba(152, 191, 69, 0.8);
+  color: #000;
+}
+#iptTelefono{
+  background-color: rgba(152, 191, 69, 0.4);
+  border: 1px solid rgba(152, 191, 69, 0.8);
+  color: #000;
+}
+
+#iptMensaje{
+  background-color: rgba(152, 191, 69, 0.4);
+  border: 1px solid rgba(152, 191, 69, 0.8);
+  color: #000;
+}
+html, body {
+    margin: 0;
+    padding: 0;
+    min-height: 100%;
+    background-image: url('https://res.cloudinary.com/dbewlikyu/image/upload/v1757048995/img__background_contactanos_zdzyl0.png');
+    background-size: cover;           /* cubre todo el contenedor */
+    background-position: center;      /* centra la imagen */
+    background-repeat: no-repeat;     
+    background-attachment: fixed;     /* se mueve al scrollear */
+}
+.contact-header {
+  position: relative;
+  background-image: url('https://res.cloudinary.com/dbewlikyu/image/upload/v1757047232/NadCollageContactanos_h2pu2m.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 100%;
+  min-height: clamp(300px, 50vh, 600px); 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 50px;
+  text-align: center;
+}
+
+.contact-header h1.contact-title {
+  margin: 0;
+  color: #fff;
+  font-size: clamp(40px, 8vw, 80px); 
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.6);
+}
+
+
+.image-container {
+    width: 100%;       /* ocupa todo el ancho */
+    display: flex;
+    justify-content: center; /* centra horizontalmente */
+    align-items: center;     /* centra verticalmente si es necesario */
+}
+
+.image-container img {
+    width: 100%;        /* se adapta al ancho del contenedor */
+    height: auto;       /* mantiene proporción */
+    object-fit: contain; /* muestra toda la imagen sin recortar */
+    display: block;
+}
+
+.contact-header .container {
+  position: relative;
+  z-index: 2;
+  color: #3671BF;
+}
+
+.contact-title {
+    text-align: center;
+    color: #3671BF;
+    font-family: "League Spartan", sans-serif;
+    font-weight: bold;
+}
+
+
+.form-label {
+    font-family: "Montserrat", sans-serif !important;
+    font-size: 22px;
+    color: #323232;
+    font-weight: bold;
+}
+
+#iptName{
+    width: 90%;
+}
+
+#iptEmail{
+    width: 90%;
+}
+
+#iptTelefono{
+    width: 90%;
+}
+
+#iptMensaje{
+    display: block;
+    width: 90%;
+    height: 150px;
+}
+
+.container i{
+    text-align: center;
+}
+
+.mb-3{
+    justify-items: center;
+}
+@media (max-width: 768px) {
+    .contact-header {
+        min-height: 350px;
+    }
+
+    .contact-header h1.contact-title {
+        font-size: 6vw;
+    }
+}
+
+@media (max-width: 500px) {
+    .contact-header {
+        min-height: 300px;
+    }
+
+    .contact-header h1.contact-title {
+        font-size: 5vw;
+    }
+}
+
+@media (max-width: 500px) {
+    .contact-header h1.contact-title {
+        font-size: 3rem; 
+        line-height: 1.2; 
+    }
+}

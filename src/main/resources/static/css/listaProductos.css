@@ -1,0 +1,136 @@
+/* Cubrir toda la pantalla  */
+html, body {
+  height: 100%;
+  margin: 0;
+  font-family: 'League Spartan', sans-serif;
+  color: #fff;
+}
+
+/* Imagen de fondo */
+body {
+  background-image: url('https://res.cloudinary.com/dbewlikyu/image/upload/v1757051552/tailandia_background_t3l4jf.jpg');
+  background-size: cover; 
+  background-position: center center; 
+  background-repeat: no-repeat; 
+  background-attachment: fixed; 
+}
+
+/* Contenedor transparente */
+.container, #list-items {
+  background: transparent; 
+}
+
+/* Cards con efecto */
+#list-items .card {
+  background: rgba(195, 195, 195, 0.753);
+  border-radius: 16px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+  padding: 1rem;
+  transition: transform 0.4s ease, box-shadow 0.4s ease, background 0.4s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  margin-bottom: 1.5rem;
+}
+
+/* Efecto hover transparente */
+#list-items .card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 16px 48px rgba(0,0,0,0.25);
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+}
+
+/* Imsgenes dentro de las cards */
+.card-img-top {
+  height: 400px; 
+  width: 100%;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 1rem;
+}
+
+/* Títulos y textos dentro de las cards  */
+#list-items .card h5 {
+  color: #A9D943 !important;
+  font-size: 2rem; 
+  font-weight: 700;
+  margin: 1rem auto; 
+  text-align: center;
+  text-shadow: 1px 1px 4px rgba(63, 63, 63, 0.689);
+  line-height: 1.2;
+  word-wrap: break-word; 
+}
+
+#list-items p {
+  color: #3671BF;
+  margin-bottom: 0.5rem;
+  text-shadow: none;
+}
+
+#list-items .card h3,
+#list-items .card h5 {
+  transition: color 0.3s ease;
+}
+
+#list-items .card:hover h3,
+#list-items .card:hover h5,
+#list-items .card:hover p {
+  color: #fff !important;
+}
+
+/* títulos */
+h1.titulo-principal {
+  font-weight: 700;
+  font-style: normal;
+  font-size: 4rem; 
+  color: #fff !important;
+  text-align: center;
+  margin: 4rem 0;
+}
+
+/*  Modal estilo  */
+.modal-content {
+  background-color: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  border-radius: 12px;
+}
+
+.modal-header, .modal-footer {
+  border-color: rgba(39, 59, 150, 0.236);
+}
+
+.modal-body p {
+  color: #fff !important;
+  text-shadow: none;
+}
+
+/* Responsividad */
+@media (max-width: 1200px) {
+  #list-items .card h5 { font-size: 1.8rem; margin: 0.8rem auto; }
+}
+
+@media (max-width: 992px) {
+  #list-items .card h5 { font-size: 1.6rem; margin: 0.7rem auto; }
+}
+
+@media (max-width: 768px) {
+  #list-items .card h5 { font-size: 1.4rem; margin: 0.6rem auto; }
+}
+
+@media (max-width: 576px) {
+  #list-items .card h5 { font-size: 1.2rem; margin: 0.5rem auto; }
+  #list-items .card { padding: 0.8rem; }
+  .card-img-top { height: 300px; }
+  h1.titulo-principal { font-size: 3rem; margin: 2rem 0; }
+}
+
+/* Márgenes Internps */
+#list-items .card-body {
+  padding: 1rem;
+}

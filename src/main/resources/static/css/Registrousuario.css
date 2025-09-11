@@ -1,0 +1,144 @@
+
+/* Títulos H1 */
+h1 {
+  font-size: 4rem !important;
+  font-weight: 600 !important;
+  color: #27538C !important;
+  font-family: "League Spartan", sans-serif; /* H1 mantiene League Spartan */
+  text-align: center;
+  line-height: 1.1;
+  margin-top: 30px;
+  margin-left: 20px;
+}
+
+@media (max-width: 992px) {
+  h1 {
+    font-size: 3.5rem !important;
+  }
+}
+
+@media (max-width: 576px) {
+  h1 {
+    font-size: 3rem !important;
+  }
+}
+
+#numTelefono{
+  background-color: rgba(152, 191, 69, 0.4);
+  border: 1px solid rgba(152, 191, 69, 0.8);
+  color: #000;
+}
+
+#email{
+  background-color: rgba(152, 191, 69, 0.4);
+  border: 1px solid rgba(152, 191, 69, 0.8);
+  color: #000;
+}
+
+#Nombre{
+  background-color: rgba(152, 191, 69, 0.4);
+  border: 1px solid rgba(152, 191, 69, 0.8);
+  color: #000;
+}
+
+#confirmarContraseña{
+    background-color: rgba(152, 191, 69, 0.4);
+  border: 1px solid rgba(152, 191, 69, 0.8);
+  color: #000;
+}
+
+#contraseña{
+  background-color: rgba(152, 191, 69, 0.4);
+  border: 1px solid rgba(152, 191, 69, 0.8);
+  color: #000;
+}
+
+.form-label{
+   font-family: "Montserrat", sans-serif !important;
+    font-size: 22px !important;
+    color: #323232 !important;
+    font-weight: bold !important;
+}
+.col-form-label{
+  font-family: "Montserrat", sans-serif !important;
+    font-size: 22px !important;
+    color: #323232 !important;
+    font-weight: bold !important;
+}
+
+    #iniciarSesionBtn {
+      border-radius: 31px;
+      color: white;
+      border: 0.3rem solid #A9D943;
+      background-color: #A9D943;
+      padding: .8rem 3.5rem;
+      gap: 0.5rem;
+      font-family: Montserrat; 
+      font-weight: bold; 
+      font-size: 1.2rem; 
+    }
+
+    #iniciarSesionBtn:hover {
+      color: #A9D943;
+      background-color: transparent;
+      border-color: #27538C;
+      font-weight: 700;
+    }
+
+    #btnEnviar {
+      border-radius: 31px;
+      background-color: #A9D943;
+      color: #FFFFFF;
+      padding: .8rem 3.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: Montserrat; 
+      font-weight: bold; 
+      font-size: 1.2rem; 
+    
+    }
+
+    #btnEnviar:hover {
+      background-color: #9cc446;
+    }
+
+    #hero-registro {
+      position: relative;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      margin: 0;
+      height: 200px;
+      display: grid;
+      align-items: center;
+    }
+
+    #hero-texto {
+      z-index: 1;
+    }
+body {
+    background-image: url('https://res.cloudinary.com/dbewlikyu/image/upload/v1757051561/japon_background_d25vet.jpg');
+    background-size: cover; /* siempre cubre toda la pantalla */
+    background-repeat: no-repeat;
+    background-position: center center;
+    min-height: 100vh; /* asegura que cubra al menos toda la ventana */
+}
+.glass-container {
+    background: rgba(255, 255, 255, 0.25);
+    border-radius: 20px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.15);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.3);
+    padding: 40px 30px;
+    max-width: 900px;
+    margin: 40px auto;
+}
+@media (max-width: 768px) {
+    .glass-container {
+        padding: 30px 20px;
+        margin: 20px 10px;
+    }
+}
+  

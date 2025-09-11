@@ -1,0 +1,25 @@
+#trabajando-seccion {
+  position: relative;
+  background-image: url('../assets/trabajando.webp');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  padding: 8rem;
+  display: grid;
+  justify-content: center;
+  min-height: 70vh;
+  align-items: center;
+}
+
+#titulo-seccion {
+  color: aliceblue;
+  z-index: 1;
+}
+
+#relleno {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.263);
+  z-index: 0;
+  backdrop-filter: blur(7px);
+}

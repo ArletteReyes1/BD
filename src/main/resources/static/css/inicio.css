@@ -1,0 +1,328 @@
+:root{
+  --brand-blue: #27538C;
+  --brand-lime: #A9D943;
+  --text: #1b1f23;
+  --muted: #6c757d;
+  --card-bg: #ffffff;
+  --card-shadow: 0 6px 20px rgba(0,0,0,.07);
+  --radius: 16px;
+}
+
+body {
+      font-family: 'Montserrat', sans-serif;
+      background-image: url(https://res.cloudinary.com/dbewlikyu/image/upload/v1757114409/bg__patron_blanco_2_a0nww6.png);
+      color: #27538C;
+    }
+
+h1, h2, h5{
+  font-weight: 700 !important;
+  color: var(--brand-blue);
+}
+h2{
+  text-align: center;
+  margin-bottom: 1.5rem;
+}    
+.h2-azul {
+  color: var(--brand-blue);
+  font-family: 'League Spartan', sans-serif; 
+  font-size: 3rem;
+
+}
+
+/* ====== Título Favoritos ====== */
+.titulo-favoritos {
+  font-family: 'League Spartan', sans-serif;
+  font-weight: 700;
+  font-size: clamp(1.5rem, 4vw, 2.5rem);
+  margin-bottom: 1.5rem;
+}
+
+.titulo-favoritos .favoritos {
+  color: #27538C; /* Azul */
+}
+
+.titulo-favoritos .recomendaciones {
+  color: #A9D943; /* Verde */
+}
+
+.hero {
+      background: url('https://res.cloudinary.com/dte9mtmma/image/upload/v1756051242/95e7d963-79dc-46f5-9388-4a128a086b2a_3_iwzhdq.jpg') center/cover no-repeat;
+      color: white;
+      text-align: center;
+      padding: 120px 20px;
+      position: relative;
+    }
+
+
+.hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.5);
+    }
+
+
+.hero-content {
+      position: relative;
+      z-index: 1;
+    }
+
+
+.hero .form-control, .hero .btn {
+      border-radius: 8px;
+    }
+
+
+.service-card, .destino-card, .porque-card, .testimonio-card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      height: 100%;
+    }
+
+
+.service-icon img {
+   width: clamp(60px, 20vw, 100px);
+  height: 200px;
+  object-fit: contain;
+  margin-bottom: 0.5rem; 
+}
+
+.service-card {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+.service-card img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+.service-card h5,
+.service-card p {
+  word-wrap: break-word;
+  text-align: center;
+}
+
+@media (max-width: 576px) {
+  .service-card img {
+    height: auto; /* la imagen se adapta al ancho */
+  }
+}
+
+.cta {
+      background: #27538C;
+      color: white;
+      text-align: center;
+      padding: 60px 20px;
+      border-radius: 16px;
+      margin: 40px 0;
+    }
+
+/*Barra de búsqueda */
+.row.g-2.justify-content-center .form-control{
+  background-color: white;
+  border-radius: 31px;
+  color: #27538C;
+  text-align: center;
+  font-weight: bold; 
+  font-size: clamp(1rem, 2.8vw, 1.1rem); /* baja un poco en móvil */
+  padding-block: .75rem;
+  padding-inline: clamp(.75rem, 3vw, 1.25rem); /* pequeño en móvil, mayor en desktop */
+  line-height: 1.2;
+  height: auto;
+}
+
+/*Servicios */
+.service-card{
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  padding: 1.25rem;
+  box-shadow: var(--card-shadow);
+  height: 100%;
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+.service-card:hover{
+  transform: translateY(-3px);
+  box-shadow: 0 10px 28px rgba(0,0,0,.09);
+}
+.service-icon{
+  font-size: 2rem;
+  margin-bottom: .5rem;
+}
+
+/* ====== Destinos ====== */
+.destino-card{
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  padding: .5rem;
+  box-shadow: var(--card-shadow);
+  height: 100%;
+}
+.destino-card img{
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: .75rem;
+  object-fit: cover;
+}
+
+/* ====== ¿Por qué elegirnos? ====== */
+.porque-card {
+  background: rgba(255, 255, 255, 0) !important;
+  border-radius: var(--radius) !important;
+  padding: 1.25rem !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2) !important;
+  height: 100% !important;
+  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.3) !important;
+  
+}
+
+.porque-card h5{
+  margin-bottom: .5rem;
+}
+
+/* ====== Testimonios ====== */
+.testimonio-card{
+  background: #f8f9fa;
+  border-left: 4px solid var(--brand-blue);
+  border-radius: .75rem;
+  padding: 1rem 1.25rem;
+  font-style: italic;
+  height: 100%;
+}
+.testimonio-card small{
+  display: inline-block;
+  margin-top: .5rem;
+  font-style: normal;
+  color: var(--muted);
+}
+
+
+/* ====== CTA final ====== */
+.cta{
+  text-align: center;
+  background: #f4f8ff;
+  border: 1px solid #e8eefb;
+  border-radius: var(--radius);
+  padding: 2.25rem 1.5rem;
+}
+.cta h2{
+  margin: 0;
+  color: var(--brand-blue);
+}
+
+/* ====== Utilidad: imágenes redondeadas dentro de tarjetas ====== */
+.img-fluid.rounded{
+  border-radius: .75rem !important;
+}
+
+
+
+
+/* ====== Responsivo ====== */
+@media (max-width: 576px){
+  .service-icon{ font-size: 1.75rem; }
+  .row.g-2.justify-content-center .form-control,
+  .row.g-2.justify-content-center .btn.btn-success{
+    font-size: 1.05rem;
+  }
+  .btn-primary,
+  .cta .btn.btn-success{
+    font-size: 1.05rem;
+    padding: .7rem 2.2rem;
+  }
+}
+  
+
+@media (max-width: 600px) {
+  th, td {
+    padding: 8px;       /* reduce padding en móviles */
+  }
+}
+
+/*flecha del carrousel index transparentes*/
+
+.swiper-button-next,
+.swiper-button-prev {
+  background: transparent !important; /* sin fondo */
+}
+
+.swiper-button-next::after,
+.swiper-button-prev::after {
+  color: transparent !important; /* flecha invisible */
+}
+
+/*imagenes mismo tamaño */
+.swiper {
+  width: 100%;
+  max-width: 1200px;   
+  height: 700px;     
+}
+
+.swiper-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;   
+  border-radius: 15px; 
+}
+
+/*   Botones   */
+
+   #btnBuscar {
+
+      background-color: white;
+      border-radius: 31px;
+      border: 0.3rem solid #A9D943;
+      color: #27538C;
+       padding: .6rem 3.5rem;
+       gap: 0.5rem; 
+      font-size: clamp(1rem, 2.8vw, 1.2rem);
+      /* padding-block: .8rem;
+      padding-inline: clamp(.75rem, 3vw, 3.5rem); */
+      line-height: 1.2;
+      font-weight: bold; 
+      /* font-size: 1.2rem;  */
+    }
+
+    #btnBuscar:hover {
+      color: white;
+      background-color: #A9D943;
+      font-weight: 700;
+    }
+
+    #btnVerDestinos{
+    background-color: #27538C; 
+    color: white;         
+    font-family: Montserrat; 
+    font-weight: bold;       
+    font-size: 1.2rem;       
+    padding: .8rem 3.5rem;    
+    border-radius: 31px;      
+    }
+    #btnVerDestinos:hover {
+      background-color: #1e4579;
+    }
+
+    #btnCotizarViaje{
+    background-color: #A9D943;
+    color: white; 
+    font-family: Montserrat; 
+    font-weight: bold; 
+    font-size: 1.2rem; 
+    padding: .8rem 3.5rem; 
+    border-radius: 31px;
+    border-color: #A9D943;
+    }
+    #btnCotizarViaje:hover {
+      background-color: #98BF45;
+    }

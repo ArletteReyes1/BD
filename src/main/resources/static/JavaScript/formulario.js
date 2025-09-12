@@ -112,9 +112,7 @@ document.addEventListener("DOMContentLoaded", () => {
       //console.log("BOdy;",JSON.stringify(nuevopaquete))
       const response1 = await fetch("http://localhost:8080/api/Productos/", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-            "Authorization": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjcmlzdGluYS5sb3BlekBvdXRsb29rLmNvbSIsInJvbGUiOiJBZG1pbmlzdHJhZG9yIiwiaWF0IjoxNzU3NTQzMTE5LCJleHAiOjE3NTc2Mjk1MTl9.JLRgwhYA9HgxhN1j4HlCA9FZGhqIHlvQ8W1gIzoBzjg"
+         headers: { "Content-Type": "application/json"
         },
         body: JSON.stringify(nuevopaquete)
         //redirect: "follow"

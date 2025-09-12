@@ -5,29 +5,53 @@ document.getElementById("loginForm").addEventListener("submit", function (event)
   const password = document.getElementById("contrasenaLogin").value;
   const alertLogin = document.getElementById("alertLogin");
 
-  // Recuperar usuarios guardados
-  let usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
+  const login = {
+    correo: email,
+    contrasena: password
+  };
 
-  // Buscar usuario que coincida
-  const usuarioEncontrado = usuarios.find(
-    u => u.email === email && u.contraseña === password
-  );
-if (usuarioEncontrado) {
-    alertLogin.className = "alert alert-success";
-    alertLogin.innerHTML = `✅ Bienvenido, ${usuarioEncontrado.nombre}.`;
+  const requestOptions = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhcmxldHRlMTIzNEBnbWFpbC5jb20iLCJyb2xlIjoiQWRtaW5pc3RyYWRvciIsImlhdCI6MTc1NzYzOTYyMywiZXhwIjoxNzU3NzI2MDIzfQ.SGJS6h3loreB2tbI"
+    },
+    body: JSON.stringify(login),
+  };
 
-    // Guardar el usuario autenticado como usuarioActivo
-    localStorage.setItem("usuarioActivo", JSON.stringify(usuarioEncontrado));
+  fetch("http://localhost:8080/api/login/", requestOptions)
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error("Error en el login");
+      }
+      return response.json();
+    })
+    .then((result) => {
+      console.log("Respuesta del backend:", result);
 
-    // Redirigir a index.html
-    setTimeout(() => {
-      window.location.href = "index.html";
-    }, 2000);
+      // Aquí depende de lo que devuelva tu backend
+      // Ejemplo: { id: 1, nombre: "Arlette", correo: "arlette@gmail.com", rol: "Admin" }
+      if (result && result.id) {
+        alertLogin.className = "alert alert-success";
+        alertLogin.innerHTML = `✅ Bienvenido, ${result.nombre}.`;
 
-  } else {
-    alertLogin.className = "alert alert-danger";
-    alertLogin.innerHTML = `❌ Correo o contraseña incorrectos.`;
-  }
+        // Guardar usuario logueado en sesión (opcional, si no quieres usar localStorage)
+        // sessionStorage.setItem("usuarioActivo", JSON.stringify(result));
+
+        // Redirigir a index.html
+        setTimeout(() => {
+          window.location.href = "index.html";
+        }, 2000);
+      } else {
+        alertLogin.className = "alert alert-danger";
+        alertLogin.innerHTML = `❌ Correo o contraseña incorrectos.`;
+      }
+    })
+    .catch((error) => {
+      console.error(error);
+      alertLogin.className = "alert alert-danger";
+      alertLogin.innerHTML = `❌ Error al conectar con el servidor.`;
+    });
 });
 
 

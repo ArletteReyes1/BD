@@ -314,7 +314,7 @@ document.addEventListener("DOMContentLoaded", () => {
 // -- funcion para el mapa --
 
 const footer = document.getElementsByTagName("footer").item(0);
-footer.insertAdjacentHTML("afterbegin", piePagina);
+footer.insertAdjacentHTML("afterbegin", '.');
 
 function mostrarMapa() {
   let mapa = document.getElementById("mapa");

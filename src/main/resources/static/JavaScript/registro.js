@@ -18,6 +18,7 @@ btnEnviar.addEventListener("click", function (event) {
         const correo = email.value.trim();
         const password = contraseña.value.trim();
         const confpassword = confirmarContraseña.value.trim();
+        
 
         // Ocultar alerta al iniciar
         alertRegistro.style.display = "none";
@@ -82,23 +83,29 @@ btnEnviar.addEventListener("click", function (event) {
 
 
         const usuario = {
-                nombre: nombre_completo,
-                telefono: numeroDeTelefono,
-                email: correo,
-                contraseña: password
+
+              //tipo: Administrador,
+                "nombre": nombre_completo,
+                "telefono": numeroDeTelefono,
+                "correo": correo,
+                "contrasena": password
         };
 
-        // Recuperar array anterior o crear uno nuevo
-        let usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
+        //Intento no.2
+        const myHeaders = new Headers();
+myHeaders.append("Content-Type", "application/json");
 
-        // Agregar el nuevo usuario
-        usuarios.push(usuario);
+        const requestOptions = {
+  method: "POST",
+    headers: myHeaders,
+  body: JSON.stringify(usuario),
+  redirect: "follow"
+};
 
-        // Guardar en localStorage
-        localStorage.setItem("usuarios", JSON.stringify(usuarios));
-
-        // Mostrar mensaje de éxito
-        alertRegistro.style.display = "block";
+fetch("http://localhost:8080/api/Usuarios/", requestOptions)
+  .then((response) => response.json())
+  .then((result) => { console.log(result);
+     alertRegistro.style.display = "block";
         alertRegistro.classList.add("alert-success");
         alertRegistro.innerHTML = "¡Usuario registrado correctamente!";
 
@@ -108,5 +115,20 @@ btnEnviar.addEventListener("click", function (event) {
         email.value = '';
         contraseña.value = '';
         confirmarContraseña.value = '';
-});
+  })
+  .catch((error) => console.error(error));
+  // let usuarios = JSON.parse(("usuarios")) || [];
+        // Agregar el nuevo usuario
+        //usuarios.push(usuario);
+        // Recuperar array anterior o crear uno nuevo
+        //let usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
 
+        // Agregar el nuevo usuario
+        //usuarios.push(usuario);
+
+        // Guardar en localStorage
+        //localStorage.setItem("usuarios", JSON.stringify(usuarios));
+
+        // Mostrar mensaje de éxito
+       
+});

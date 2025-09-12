@@ -13,7 +13,7 @@ document.getElementById("loginForm").addEventListener("submit", function (event)
     body: JSON.stringify(login)
   };
 
-  fetch("http://localhost:8080/api/login/", requestOptions)
+  fetch("/api/login/", requestOptions)
     .then((response) => {
       if (!response.ok) {
         throw new Error("❌ Usuario o contraseña incorrectos");
@@ -29,6 +29,7 @@ document.getElementById("loginForm").addEventListener("submit", function (event)
 
         // Guardar token en sessionStorage o localStorage
         sessionStorage.setItem("token", result.accessToken);
+		sessionStorage.setItem("usuarioActivo", JSON.stringify(result.usuario));
 
         setTimeout(() => {
           window.location.href = "index.html";

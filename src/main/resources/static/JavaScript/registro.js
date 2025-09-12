@@ -102,7 +102,7 @@ myHeaders.append("Content-Type", "application/json");
   redirect: "follow"
 };
 
-fetch("http://localhost:8080/api/Usuarios/", requestOptions)
+fetch("/api/Usuarios/", requestOptions)
   .then((response) => response.json())
   .then((result) => { console.log(result);
      alertRegistro.style.display = "block";

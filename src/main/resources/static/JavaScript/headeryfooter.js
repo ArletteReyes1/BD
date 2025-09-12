@@ -278,7 +278,7 @@ if (pinIcon) {
 // OCULTA EL BOTON DE REGISTRO SI HAY SESION INICIADA
 document.addEventListener("DOMContentLoaded", () => {
   const btnRegistro = document.getElementById("btnRegistro");
-  let usuarioActivo = JSON.parse(localStorage.getItem("usuarioActivo"));
+  let usuarioActivo = JSON.parse(sessionStorage.getItem("usuarioActivo"));
 
   if (usuarioActivo) {
     btnRegistro.style.display = "none"; // Oculta el botón si hay sesión activa
@@ -290,7 +290,7 @@ document.addEventListener("DOMContentLoaded", () => {
 // FUNCIONALIDAD DEL BOTON CERRAR SESION CUANDO HAY SESION INICIADA
 document.addEventListener("DOMContentLoaded", () => {
   const cerrarSesion = document.getElementById("cerrarSesion");
-  let usuarioActivo = JSON.parse(localStorage.getItem("usuarioActivo"));
+  let usuarioActivo = JSON.parse(sessionStorage.getItem("usuarioActivo"));
   if (usuarioActivo) {
     cerrarSesion.style.display = "block"; // Muestra el botón si hay sesión activa
     cerrarSesion.insertAdjacentHTML("afterbegin", `Cerrar sesión, ${usuarioActivo.nombre.split(" ")[0]}`); // Muestra el nombre del usuario
@@ -303,7 +303,7 @@ document.addEventListener("DOMContentLoaded", () => {
     <strong>✔ Has cerrado sesión correctamente.</strong> Redirigiendo a la página de inicio...
     </div>`);
     cerrarSesion.style.display = "none"; // Oculta el botón al cerrar sesión
-    localStorage.removeItem("usuarioActivo"); // Elimina la sesión activa
+    sessionStorage.removeItem("usuarioActivo"); // Elimina la sesión activa
     setTimeout(() => {
       window.location.href = "index.html"; // Redirige a la página de inicio después de 2 segundos
     }, 1200);

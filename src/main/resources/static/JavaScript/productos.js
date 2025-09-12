@@ -3,7 +3,7 @@ const requestOptions = {
   redirect: "follow"
 };
 
-fetch("http://localhost:8080/api/Productos/", requestOptions)
+fetch("/api/Productos/", requestOptions)
   .then((response) => response.json())
   .then((result) => { result.forEach(p=>addItem(p))
   })

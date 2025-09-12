@@ -98,19 +98,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
       //console.log("URL ", urlCloudinary);
 
-      const nuevopaquete = {
-            titulo,
-            imagenUrl:urlCloudinary,
-            precio,
-            lugares:lugar,
-            dias,
-            noches,
-            incluye,
-            noIncluye:noincluye
-          };
+	  const nuevopaquete = {
+	              titulo,
+	              imagenUrl:urlCloudinary,
+	              precio,
+	              lugares:lugar,
+	              dias,
+	              noches,
+	              incluye,
+	              noIncluye:noincluye
+	            };
       
       //console.log("BOdy;",JSON.stringify(nuevopaquete))
-      const response1 = await fetch("http://localhost:8080/api/Productos/", {
+      const response1 = await fetch("/api/Productos/", {
         method: "POST",
          headers: { "Content-Type": "application/json"
         },
